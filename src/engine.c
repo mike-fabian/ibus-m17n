@@ -33,6 +33,7 @@ struct _IBusM17NEngineClass {
     guint preedit_foreground;
     guint preedit_background;
     gint preedit_underline;
+    IBusPreeditFocusMode preedit_focus_mode;
     gint lookup_table_orientation;
 
     MInputMethod *im;
@@ -258,6 +259,9 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
         PREEDIT_BACKGROUND :
         INVALID_COLOR;
     klass->preedit_underline = IBUS_ATTR_UNDERLINE_NONE;
+    klass->preedit_focus_mode = engine_config->preedit_highlight ?
+        IBUS_ENGINE_PREEDIT_COMMIT :
+        IBUS_ENGINE_PREEDIT_CLEAR;
     klass->lookup_table_orientation = IBUS_ORIENTATION_SYSTEM;
 
     ibus_m17n_engine_config_free (engine_config);
@@ -493,10 +497,11 @@ ibus_m17n_engine_update_preedit (IBusM17NEngine *m17n)
                                         klass->preedit_background, 0, -1);
         ibus_text_append_attribute (text, IBUS_ATTR_TYPE_UNDERLINE,
                                     klass->preedit_underline, 0, -1);
-        ibus_engine_update_preedit_text ((IBusEngine *) m17n,
-                                         text,
-                                         m17n->context->cursor_pos,
-                                         mtext_len (m17n->context->preedit) > 0);
+        ibus_engine_update_preedit_text_with_mode ((IBusEngine *) m17n,
+                                                   text,
+                                                   m17n->context->cursor_pos,
+                                                   mtext_len (m17n->context->preedit) > 0,
+                                                   klass->preedit_focus_mode);
     }
 }
 
@@ -678,7 +683,10 @@ ibus_m17n_engine_focus_out (IBusEngine *engine)
 {
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
-    ibus_m17n_engine_process_key (m17n, Minput_focus_out);
+    /* To make ibus_engine_update_preedit_text_with_mode work
+       properly, we just reset the IC instead of passing Mfocus_out to
+       m17n-lib. */
+    minput_reset_ic (m17n->context);
 
     parent_class->focus_out (engine);
 }
