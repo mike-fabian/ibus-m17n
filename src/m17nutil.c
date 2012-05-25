@@ -336,6 +336,8 @@ ibus_m17n_get_component (void)
     GList *engines, *p;
     IBusComponent *component;
     XMLNode *node;
+    const gchar *setupdir;
+    gchar *default_xml;
 
     component = ibus_component_new ("org.freedesktop.IBus.M17n",
                                     N_("M17N"),
@@ -346,7 +348,12 @@ ibus_m17n_get_component (void)
                                     "",
                                     "ibus-m17n");
 
-    node = ibus_xml_parse_file (DEFAULT_XML);
+    setupdir = g_getenv ("IBUS_M17N_SETUPDIR");
+    if (setupdir == NULL)
+        setupdir = SETUPDIR;
+    default_xml = g_build_filename (setupdir, "default.xml", NULL);
+
+    node = ibus_xml_parse_file (default_xml);
     if (node && g_strcmp0 (node->name, "engines") == 0) {
         for (p = node->sub_nodes; p != NULL; p = p->next) {
             XMLNode *sub_node = p->data;
@@ -367,9 +374,11 @@ ibus_m17n_get_component (void)
         }
         config_list = g_slist_reverse (config_list);
     } else
-        g_warning ("failed to parse %s", DEFAULT_XML);
+        g_warning ("failed to parse %s", default_xml);
     if (node)
         ibus_xml_free (node);
+
+    g_free (default_xml);
 
     engines = ibus_m17n_list_engines ();
 

@@ -38,6 +38,7 @@ TESTS = \
 	$(check_PROGRAMS) \
 	$(NULL)
 
+TESTS_ENVIRONMENT = IBUS_M17N_SETUPDIR=$(builddir)
 
 test_m17n_SOURCES = \
 	test.c \
@@ -46,7 +47,7 @@ test_m17n_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 test_m17n_LDADD = \
-	libm17ncommon.a	\
+	libm17ncommon.la \
 	$(AM_LDADD) \
 	$(NULL)
 
