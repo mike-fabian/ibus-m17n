@@ -73,7 +73,7 @@ parse_m17n_value (MPlist *plist, gchar *text)
     if (mplist_key (plist) == Mtext) {
         MText *mtext;
 
-        mtext = mtext_from_data (text, strlen (text), MTEXT_FORMAT_UTF_8);
+        mtext = mconv_decode_buffer (Mcoding_utf_8, text, strlen (text));
         value = mplist ();
         mplist_add (value, Mtext, mtext);
         return value;
