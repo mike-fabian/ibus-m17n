@@ -12,6 +12,32 @@
 		<preedit-highlight>FALSE</preedit-highlight>
 		<symbol></symbol>
 	</engine>
+	<!-- Blacklist some engines -->
+	<!-- kbd engines are duplicate of xkb engines -->
+	<engine>
+		<name>m17n:*:kbd</name>
+		<rank>-1</rank>
+	</engine>
+	<!-- zh:py is superseded by ibus-pinyin etc -->
+	<engine>
+		<name>m17n:zh:py</name>
+		<rank>-1</rank>
+	</engine>
+	<!-- ja:anthy is superseded by ibus-anthy -->
+	<engine>
+		<name>m17n:ja:anthy</name>
+		<rank>-1</rank>
+	</engine>
+	<!-- ko:han2 is superseded by ibus-hangul -->
+	<engine>
+		<name>m17n:ko:han2</name>
+		<rank>-1</rank>
+	</engine>
+	<!-- ko:romaja is superseded by ibus-hangul -->
+	<engine>
+		<name>m17n:ko:romaja</name>
+		<rank>-1</rank>
+	</engine>
 	<!-- Indic engines should be selected by default:
 	     https://bugzilla.redhat.com/show_bug.cgi?id=640896 -->
 	<engine>
