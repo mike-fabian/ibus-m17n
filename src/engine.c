@@ -64,14 +64,6 @@ static void ibus_m17n_engine_focus_out      (IBusEngine             *engine);
 static void ibus_m17n_engine_reset          (IBusEngine             *engine);
 static void ibus_m17n_engine_enable         (IBusEngine             *engine);
 static void ibus_m17n_engine_disable        (IBusEngine             *engine);
-static void ibus_engine_set_cursor_location (IBusEngine             *engine,
-                                             gint                    x,
-                                             gint                    y,
-                                             gint                    w,
-                                             gint                    h);
-static void ibus_m17n_engine_set_capabilities
-                                            (IBusEngine             *engine,
-                                             guint                   caps);
 static void ibus_m17n_engine_page_up        (IBusEngine             *engine);
 static void ibus_m17n_engine_page_down      (IBusEngine             *engine);
 static void ibus_m17n_engine_cursor_up      (IBusEngine             *engine);
@@ -80,12 +72,6 @@ static void ibus_m17n_engine_property_activate
                                             (IBusEngine             *engine,
                                              const gchar            *prop_name,
                                              guint                   prop_state);
-static void ibus_m17n_engine_property_show
-                                            (IBusEngine             *engine,
-                                             const gchar            *prop_name);
-static void ibus_m17n_engine_property_hide
-                                            (IBusEngine             *engine,
-                                             const gchar            *prop_name);
 
 static void ibus_m17n_engine_commit_string
                                             (IBusM17NEngine         *m17n,
@@ -704,8 +690,6 @@ ibus_m17n_engine_reset (IBusEngine *engine)
 static void
 ibus_m17n_engine_enable (IBusEngine *engine)
 {
-    IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
-
     parent_class->enable (engine);
 
     /* Issue a dummy ibus_engine_get_surrounding_text() call to tell
@@ -716,8 +700,6 @@ ibus_m17n_engine_enable (IBusEngine *engine)
 static void
 ibus_m17n_engine_disable (IBusEngine *engine)
 {
-    IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
-
     ibus_m17n_engine_focus_out (engine);
     parent_class->disable (engine);
 }
@@ -951,7 +933,9 @@ ibus_m17n_engine_callback (MInputContext *context,
                                           &anchor_pos);
         nchars = ibus_text_get_length (text);
         nbytes = g_utf8_offset_to_pointer (text->text, nchars) - text->text;
-        mt = mconv_decode_buffer (Mcoding_utf_8, text->text, nbytes);
+        mt = mconv_decode_buffer (Mcoding_utf_8,
+                                  (const unsigned char *) text->text,
+                                  nbytes);
         g_object_unref (text);
 
         len = (long) mplist_value (m17n->context->plist);

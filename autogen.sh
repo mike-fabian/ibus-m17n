@@ -18,8 +18,8 @@ which gnome-autogen.sh || {
     exit 1
 }
 
-export CFLAGS="-g -O0"
-export CXXFLAGS="$CFLAGS"
+export CFLAGS=${CFLAGS-"-Wall"}
+export CXXFLAGS=${CXXFLAGS-"$CFLAGS"}
 
 ACLOCAL_FLAGS="$ACLOCAL_FLAGS -I m4"
 REQUIRED_AUTOMAKE_VERSION=1.10

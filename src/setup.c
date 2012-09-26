@@ -73,7 +73,9 @@ parse_m17n_value (MPlist *plist, gchar *text)
     if (mplist_key (plist) == Mtext) {
         MText *mtext;
 
-        mtext = mconv_decode_buffer (Mcoding_utf_8, text, strlen (text));
+        mtext = mconv_decode_buffer (Mcoding_utf_8,
+                                     (const unsigned char *) text,
+                                     strlen (text));
         value = mplist ();
         mplist_add (value, Mtext, mtext);
         return value;
@@ -372,10 +374,10 @@ setup_dialog_load_config (SetupDialog *dialog)
 static gchar *
 _gdk_color_to_string (GdkColor *color)
 {
-    g_strdup_printf ("#%02X%02X%02X",
-                     (color->red & 0xFF00) >> 8,
-                     (color->green & 0xFF00) >> 8,
-                     (color->blue & 0xFF00) >> 8);
+    return g_strdup_printf ("#%02X%02X%02X",
+                            (color->red & 0xFF00) >> 8,
+                            (color->green & 0xFF00) >> 8,
+                            (color->blue & 0xFF00) >> 8);
 }
 
 static void
@@ -428,7 +430,7 @@ save_m17n_options (SetupDialog *dialog)
     gboolean retval = TRUE;
 
     if (!gtk_tree_model_get_iter_first (model, &iter))
-        return;
+        return FALSE;
 
     do {
         gtk_tree_model_get (model, &iter,
@@ -567,9 +569,8 @@ start (const gchar *engine_name)
 {
     IBusBus *bus;
     IBusConfig *config;
-    gchar **strv, *section;
+    gchar **strv;
     SetupDialog *dialog;
-    GObject *object;
 
     ibus_init ();
     ibus_m17n_init_common ();

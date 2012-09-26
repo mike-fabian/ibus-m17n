@@ -53,7 +53,9 @@ ibus_m17n_mtext_to_utf8 (MText *text)
     bufsize = (mtext_len (text) + 1) * 6;
     buf = (gchar *) g_malloc (bufsize);
 
-    mconv_rebind_buffer (utf8_converter, buf, bufsize);
+    mconv_rebind_buffer (utf8_converter,
+                         (const unsigned char *) buf,
+                         bufsize);
     mconv_encode (utf8_converter, text);
 
     buf [utf8_converter->nbytes] = 0;
@@ -76,7 +78,9 @@ ibus_m17n_mtext_to_ucs4 (MText *text, glong *nchars)
     bufsize = (mtext_len (text) + 1) * 6;
     buf = (gchar *) g_malloc (bufsize);
 
-    mconv_rebind_buffer (utf8_converter, buf, bufsize);
+    mconv_rebind_buffer (utf8_converter,
+                         (const unsigned char *) buf,
+                         bufsize);
     if (mconv_encode (utf8_converter, text) < 0) {
         g_free (buf);
         return NULL;
@@ -202,17 +206,12 @@ ibus_m17n_list_engines (void)
             if (l) {
                 /* check candidates encoding */
                 MPlist *sl;
-                MSymbol varname;
-                MText *vardesc;
-                MSymbol varunknown;
                 MSymbol varcharset;
 
                 sl = mplist_value (l);
-                varname  = mplist_value (sl);
+                /* L = (VAR-NAME DESCRIPTION 'nil' VALUE) */
                 sl = mplist_next (sl);
-                vardesc = mplist_value (sl);
                 sl = mplist_next (sl);
-                varunknown = mplist_value (sl);
                 sl = mplist_next (sl);
                 varcharset = mplist_value (sl);
 
