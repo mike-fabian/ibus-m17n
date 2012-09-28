@@ -611,6 +611,11 @@ main (gint argc, gchar **argv)
     g_option_context_free (context);
 
     gtk_init (&argc, &argv);
+
+    if (!opt_name) {
+        opt_name = (gchar *) g_getenv ("IBUS_ENGINE_NAME");
+    }
+
     if (!opt_name) {
         fprintf (stderr, "can't determine IBus engine name; use --name\n");
         exit (1);

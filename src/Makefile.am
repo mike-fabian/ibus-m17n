@@ -106,6 +106,7 @@ componentdir = @datadir@/ibus/component
 EXTRA_DIST = \
 	m17n.xml.in.in \
 	default.xml.in \
+	$(desktop_in_in_files) \
 	$(NULL)
 
 DISTCLEANFILES = \
@@ -116,6 +117,8 @@ DISTCLEANFILES = \
 CLEANFILES = \
 	m17n.xml \
 	default.xml \
+	$(desktop_DATA)	\
+	$(desktop_in_files) \
 	$(NULL)
 
 m17n.xml: m17n.xml.in
@@ -134,3 +137,16 @@ SUFFIXES = .xml.in .xml
 
 test: ibus-engine-m17n
 	$(builddir)/ibus-engine-m17n
+
+desktop_in_in_files = ibus-setup-m17n.desktop.in.in
+desktop_in_files = $(desktop_in_in_files:.in.in=.in)
+
+$(desktop_in_files): %.desktop.in: %.desktop.in.in Makefile
+	$(AM_V_GEN) sed \
+	       -e "s|\@libexecdir\@|$(libexecdir)|" \
+	       $< > $@.tmp && mv $@.tmp $@
+
+desktopdir=$(datadir)/applications
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+@INTLTOOL_DESKTOP_RULE@
