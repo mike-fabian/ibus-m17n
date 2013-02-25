@@ -656,9 +656,7 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
     if (modifiers & IBUS_RELEASE_MASK)
         return FALSE;
 
-    /* If keyval is already translated by IBUS_MOD5_MASK.  Try to
-       obtain the untranslated keyval from the US keymap. */
-    if (klass->use_us_layout || (modifiers & IBUS_MOD5_MASK) != 0) {
+    if (klass->use_us_layout) {
         keyval = ibus_keymap_lookup_keysym (m17n->keymap, keycode,
                                             modifiers & ~IBUS_MOD5_MASK);
     }
