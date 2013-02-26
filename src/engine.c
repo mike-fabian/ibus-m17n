@@ -23,6 +23,7 @@ struct _IBusM17NEngine {
     IBusProperty    *setup_prop;
 #endif  /* HAVE_SETUP */
     IBusPropList    *prop_list;
+    IBusKeymap      *us_keymap;
 };
 
 struct _IBusM17NEngineClass {
@@ -35,6 +36,7 @@ struct _IBusM17NEngineClass {
     gint preedit_underline;
     IBusPreeditFocusMode preedit_focus_mode;
     gint lookup_table_orientation;
+    gboolean use_us_layout;
 
     MInputMethod *im;
 };
@@ -249,6 +251,7 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
         IBUS_ENGINE_PREEDIT_COMMIT :
         IBUS_ENGINE_PREEDIT_CLEAR;
     klass->lookup_table_orientation = IBUS_ORIENTATION_SYSTEM;
+    klass->use_us_layout = FALSE;
 
     ibus_m17n_engine_config_free (engine_config);
 
@@ -290,6 +293,14 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
             klass->lookup_table_orientation = g_variant_get_int32 (value);
             g_variant_unref (value);
         }
+
+        value = g_variant_lookup_value (values,
+                                        "use_us_layout",
+                                        G_VARIANT_TYPE_BOOLEAN);
+        if (value != NULL) {
+            klass->use_us_layout = g_variant_get_boolean (value);
+            g_variant_unref (value);
+        }
         g_variant_unref (values);
     }
 
@@ -326,6 +337,8 @@ ibus_m17n_config_value_changed (IBusConfig          *config,
             klass->preedit_underline = g_variant_get_int32 (value);
         } else if (g_strcmp0 (name, "lookup_table_orientation") == 0) {
             klass->lookup_table_orientation = g_variant_get_int32 (value);
+        } else if (g_strcmp0 (name, "use_us_layout") == 0) {
+            klass->use_us_layout = g_variant_get_boolean (value);
         }
     }
 }
@@ -370,6 +383,7 @@ ibus_m17n_engine_init (IBusM17NEngine *m17n)
     m17n->table = ibus_lookup_table_new (9, 0, TRUE, TRUE);
     g_object_ref_sink (m17n->table);
     m17n->context = NULL;
+    m17n->us_keymap = ibus_keymap_get ("us");
 }
 
 static GObject*
@@ -462,6 +476,11 @@ ibus_m17n_engine_destroy (IBusM17NEngine *m17n)
         m17n->context = NULL;
     }
 
+    if (m17n->us_keymap) {
+        g_object_unref (m17n->us_keymap);
+        m17n->us_keymap = NULL;
+    }
+
     IBUS_OBJECT_CLASS (parent_class)->destroy ((IBusObject *)m17n);
 }
 
@@ -517,28 +536,25 @@ ibus_m17n_engine_commit_string (IBusM17NEngine *m17n,
    Since IBus engines are supposed to be cross-platform, the code
    should go into IBus core, instead of ibus-m17n. */
 static MSymbol
-ibus_m17n_key_event_to_symbol (guint keycode,
-                               guint keyval,
-                               guint modifiers)
+ibus_m17n_key_event_to_symbol (IBusM17NEngine *m17n,
+                               guint           keycode,
+                               guint           keyval,
+                               guint           modifiers)
 {
     GString *keysym;
     MSymbol mkeysym = Mnil;
     guint mask = 0;
-    IBusKeymap *keymap;
 
     if (keyval >= IBUS_Shift_L && keyval <= IBUS_Hyper_R) {
         return Mnil;
     }
 
-    /* Here, keyval is already translated by IBUS_MOD5_MASK.  Obtain
-       the untranslated keyval from the underlying keymap and
-       represent the translated keyval as the form "G-<untranslated
-       keyval>", which m17n-lib accepts. */
+    /* If keyval is already translated by IBUS_MOD5_MASK.  Try to
+       obtain the untranslated keyval from the US keymap. */
     if (modifiers & IBUS_MOD5_MASK) {
-        keymap = ibus_keymap_get ("us");
-        keyval = ibus_keymap_lookup_keysym (keymap, keycode,
+        keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
+                                            keycode,
                                             modifiers & ~IBUS_MOD5_MASK);
-        g_object_unref (keymap);
     }
 
     keysym = g_string_new ("");
@@ -642,15 +658,38 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
                                     guint           modifiers)
 {
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
+    IBusM17NEngineClass *klass =
+        (IBusM17NEngineClass *) G_OBJECT_GET_CLASS (m17n);
+    guint original_keyval = keyval;
 
     if (modifiers & IBUS_RELEASE_MASK)
         return FALSE;
-    MSymbol m17n_key = ibus_m17n_key_event_to_symbol (keycode, keyval, modifiers);
 
-    if (m17n_key == Mnil)
-        return FALSE;
+    if (klass->use_us_layout) {
+        keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
+                                            keycode,
+                                            modifiers);
+    }
 
-    return ibus_m17n_engine_process_key (m17n, m17n_key);
+    MSymbol m17n_key = ibus_m17n_key_event_to_symbol (m17n,
+                                                      keycode,
+                                                      keyval,
+                                                      modifiers);
+    if (m17n_key != Mnil && ibus_m17n_engine_process_key (m17n, m17n_key)) {
+        return TRUE;
+    }
+
+    /* If keyval is translated in US layout, send the new keyval and
+       notify that the event is handled. */
+    if (keyval != original_keyval && 0x20 <= keyval && keyval < 0x7F) {
+        gchar buf[2];
+        buf[0] = keyval;
+        buf[1] = '\0';
+        ibus_m17n_engine_commit_string (m17n, buf);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static void

@@ -25,6 +25,7 @@ struct _SetupDialog {
     GtkWidget *colorbutton_foreground;
     GtkWidget *checkbutton_background;
     GtkWidget *colorbutton_background;
+    GtkWidget *checkbutton_use_us_layout;
     GtkWidget *treeview;
     GtkListStore *store;
 
@@ -290,6 +291,25 @@ load_choice (GVariant    *values,
 }
 
 static void
+load_toggle (GVariant        *values,
+             GtkToggleButton *togglebutton,
+             const gchar     *name,
+             gboolean         defval)
+{
+    GVariant *value;
+    gboolean bvalue;
+
+    bvalue = defval;
+    value = g_variant_lookup_value (values, name, G_VARIANT_TYPE_BOOLEAN);
+    if (value != NULL) {
+        bvalue = g_variant_get_boolean (value);
+        g_variant_unref (value);
+    }
+
+    gtk_toggle_button_set_active (togglebutton, bvalue);
+}
+
+static void
 setup_dialog_load_config (SetupDialog *dialog)
 {
     GVariant *values;
@@ -337,6 +357,12 @@ setup_dialog_load_config (SetupDialog *dialog)
                  GTK_COMBO_BOX (dialog->combobox_orientation),
                  "lookup_table_orientation",
                  IBUS_ORIENTATION_SYSTEM);
+
+    /* Use US keyboard layout */
+    load_toggle (values,
+                 GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
+                 "use_us_layout",
+                 FALSE);
 
     /* Advanced -> m17n-lib configuration */
     dialog->store = gtk_list_store_new (NUM_COLS,
@@ -420,6 +446,20 @@ save_choice (SetupDialog *dialog,
     ibus_config_set_value (dialog->config, dialog->section, name, value);
 }
 
+static void
+save_toggle (SetupDialog     *dialog,
+             GtkToggleButton *togglebutton,
+             const gchar     *name)
+{
+    GVariant *value;
+
+    value = g_variant_new_boolean (gtk_toggle_button_get_active (togglebutton));
+    ibus_config_set_value (dialog->config,
+                           dialog->section,
+                           name,
+                           value);
+}
+
 static gboolean
 save_m17n_options (SetupDialog *dialog)
 {
@@ -501,6 +541,9 @@ setup_dialog_save_config (SetupDialog *dialog)
     save_choice (dialog,
                  GTK_COMBO_BOX (dialog->combobox_orientation),
                  "lookup_table_orientation");
+    save_toggle (dialog,
+                 GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
+                 "use_us_layout");
     save_m17n_options (dialog);
 }
 
@@ -549,6 +592,8 @@ setup_dialog_new (IBusConfig *config,
     dialog->combobox_underline = GTK_WIDGET (object);
     object = gtk_builder_get_object (builder, "combobox_orientation");
     dialog->combobox_orientation = GTK_WIDGET (object);
+    object = gtk_builder_get_object (builder, "checkbutton_use_us_layout");
+    dialog->checkbutton_use_us_layout = GTK_WIDGET (object);
     object = gtk_builder_get_object (builder, "treeview_mim_config");
     dialog->treeview = GTK_WIDGET (object);
 
