@@ -19,15 +19,14 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 AM_CFLAGS = \
-	@IBUS_CFLAGS@ \
-	@M17N_CFLAGS@ \
+	$(IBUS_CFLAGS) \
+	$(M17N_CFLAGS) \
 	-DPKGDATADIR=\"$(pkgdatadir)\" \
 	-DLIBEXECDIR=\"$(libexecdir)\" \
-	-DSETUPDIR=\"$(setupdir)\" \
 	$(NULL)
 AM_LDADD = \
-	@IBUS_LIBS@ \
-	@M17N_LIBS@ \
+	$(IBUS_LIBS) \
+	$(M17N_LIBS) \
 	$(NULL)
 
 check_PROGRAMS = \
@@ -38,7 +37,7 @@ TESTS = \
 	$(check_PROGRAMS) \
 	$(NULL)
 
-TESTS_ENVIRONMENT = IBUS_M17N_SETUPDIR=$(builddir)
+TESTS_ENVIRONMENT = IBUS_M17N_PKGDATADIR=$(builddir)
 
 test_m17n_SOURCES = \
 	test.c \
@@ -50,6 +49,9 @@ test_m17n_LDADD = \
 	libm17ncommon.la \
 	$(AM_LDADD) \
 	$(NULL)
+
+test: ibus-engine-m17n
+	$(builddir)/ibus-engine-m17n
 
 libexec_PROGRAMS = ibus-engine-m17n
 
@@ -68,8 +70,8 @@ ibus_engine_m17n_SOURCES = \
 	$(NULL)
 ibus_engine_m17n_LDADD = \
 	libm17ncommon.la \
-	@IBUS_LIBS@ \
-	@M17N_LIBS@ \
+	$(IBUS_LIBS) \
+	$(M17N_LIBS) \
 	$(NULL)
 
 if HAVE_GTK
@@ -79,72 +81,59 @@ ibus_setup_m17n_SOURCES = \
 	setup.c \
 	$(NULL)
 ibus_setup_m17n_CFLAGS = \
-	@GTK_CFLAGS@ \
+	$(GTK_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 ibus_setup_m17n_LDADD = \
 	libm17ncommon.la \
-	@IBUS_LIBS@ \
-	@M17N_LIBS@ \
-	@GTK_LIBS@ \
+	$(IBUS_LIBS) \
+	$(M17N_LIBS) \
+	$(GTK_LIBS) \
 	$(NULL)
+
+setupdir = $(pkgdatadir)/setup
 dist_setup_DATA = \
 	ibus-m17n-preferences.ui \
 	$(NULL)
 endif
 
-setup_DATA = \
+pkgdata_DATA = \
 	default.xml \
 	$(NULL)
-setupdir = $(pkgdatadir)/setup
 
 component_DATA = \
 	m17n.xml \
 	$(NULL)
-componentdir = @datadir@/ibus/component
+componentdir = $(datadir)/ibus/component
 
 EXTRA_DIST = \
-	m17n.xml.in.in \
-	default.xml.in \
+	m17n.xml.in \
 	$(desktop_in_in_files) \
 	$(NULL)
 
 DISTCLEANFILES = \
 	m17n.xml.in \
-	default.xml.in \
 	$(NULL)
 
 CLEANFILES = \
 	m17n.xml \
-	default.xml \
 	$(desktop_DATA)	\
 	$(desktop_in_files) \
 	$(NULL)
 
+edit = sed \
+	-e 's|@VERSION[@]|$(VERSION)|g' \
+	-e 's|@libexecdir[@]|$(libexecdir)|g' \
+	-e 's|@pkgdatadir[@]|$(pkgdatadir)|g'
+
 m17n.xml: m17n.xml.in
-default.xml: default.xml.in
-
-SUFFIXES = .xml.in .xml
-.xml.in.xml:
-	$(AM_V_GEN) \
-	( \
-		libexecdir=${libexecdir}; \
-		pkgdatadir=${pkgdatadir}; \
-		setupdir=${setupdir}; \
-		s=`cat $<`; \
-		eval "echo \"$${s}\""; \
-	) > $@
-
-test: ibus-engine-m17n
-	$(builddir)/ibus-engine-m17n
+	$(AM_V_GEN) $(edit) $< > $@.tmp && mv $@.tmp $@
 
 desktop_in_in_files = ibus-setup-m17n.desktop.in.in
 desktop_in_files = $(desktop_in_in_files:.in.in=.in)
 
 $(desktop_in_files): %.desktop.in: %.desktop.in.in Makefile
-	$(AM_V_GEN) sed \
-	       -e "s|\@libexecdir\@|$(libexecdir)|" \
-	       $< > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN) $(edit) $< > $@.tmp && mv $@.tmp $@
 
 desktopdir=$(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)

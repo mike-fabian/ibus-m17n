@@ -11,7 +11,7 @@
 
 static MConverter *utf8_converter = NULL;
 
-#define DEFAULT_XML (SETUPDIR "/default.xml")
+#define DEFAULT_XML (PKGDATADIR "/default.xml")
 
 typedef enum {
     ENGINE_CONFIG_RANK_MASK = 1 << 0,
@@ -335,22 +335,22 @@ ibus_m17n_get_component (void)
     GList *engines, *p;
     IBusComponent *component;
     XMLNode *node;
-    const gchar *setupdir;
+    const gchar *pkgdatadir;
     gchar *default_xml;
 
     component = ibus_component_new ("org.freedesktop.IBus.M17n",
                                     N_("M17N"),
-                                    "0.1.0",
+                                    PACKAGE_VERSION,
                                     "GPL",
                                     "Peng Huang <shawn.p.huang@gmail.com>",
                                     "http://code.google.com/p/ibus/",
                                     "",
-                                    "ibus-m17n");
+                                    PACKAGE_NAME);
 
-    setupdir = g_getenv ("IBUS_M17N_SETUPDIR");
-    if (setupdir == NULL)
-        setupdir = SETUPDIR;
-    default_xml = g_build_filename (setupdir, "default.xml", NULL);
+    pkgdatadir = g_getenv ("IBUS_M17N_PKGDATADIR");
+    if (pkgdatadir == NULL)
+        pkgdatadir = PKGDATADIR;
+    default_xml = g_build_filename (pkgdatadir, "default.xml", NULL);
 
     node = ibus_xml_parse_file (default_xml);
     if (node && g_strcmp0 (node->name, "engines") == 0) {

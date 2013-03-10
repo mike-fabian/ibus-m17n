@@ -1,9 +1,9 @@
-<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- filename: m17n.xml -->
 <component>
 	<name>org.freedesktop.IBus.M17N</name>
 	<description>M17N Component</description>
-	<exec>${libexecdir}/ibus-engine-m17n --ibus</exec>
+	<exec>@libexecdir@/ibus-engine-m17n --ibus</exec>
 	<version>@VERSION@</version>
 	<author>Peng Huang &lt;shawn.p.huang@gmail.com&gt;</author>
 	<license>GPL</license>
@@ -11,8 +11,8 @@
 	<textdomain>ibus-m17n</textdomain>
 	<observed-paths>
 		<path>/usr/share/m17n/</path>
-		<path>${setupdir}/default.xml</path>
+		<path>@pkgdatadir@/default.xml</path>
 		<path>~/.m17n.d/</path>
 	</observed-paths>
-	<engines exec=\"${libexecdir}/ibus-engine-m17n --xml\" />
+	<engines exec="@libexecdir@/ibus-engine-m17n --xml" />
 </component>
