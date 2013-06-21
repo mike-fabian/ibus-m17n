@@ -226,9 +226,53 @@ get_combo_box_index_by_value (GtkComboBox *combobox,
     return -1;
 }
 
+#if GTK_CHECK_VERSION(3,0,0)
 static void
-_gdk_color_from_uint (guint     color,
-                      GdkColor *color_gdk)
+_gdk_rgba_from_uint (GdkRGBA *rgba,
+                     guint    color)
+{
+    rgba->red = ((color >> 8) & 0xFF00) / 65535.;
+    rgba->green = (color & 0xFF00) / 65535.;
+    rgba->blue = ((color & 0xFF) << 8) / 65535.;
+    rgba->alpha = 1.0;
+}
+
+static gchar *
+_gdk_rgba_to_string (GdkRGBA *rgba)
+{
+    return g_strdup_printf ("#%02X%02X%02X",
+                            (gint) (rgba->red * 255),
+                            (gint) (rgba->green * 255),
+                            (gint) (rgba->blue * 255));
+}
+
+static void
+set_color_string (GtkColorButton *colorbutton, const gchar *color)
+{
+    GdkRGBA rgba;
+    gdk_rgba_parse (&rgba, color);
+    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (colorbutton), &rgba);
+}
+
+static void
+set_color_uint (GtkColorButton *colorbutton, guint color)
+{
+    GdkRGBA rgba;
+    _gdk_rgba_from_uint (&rgba, color);
+    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (colorbutton), &rgba);
+}
+
+static gchar *
+get_color_string (GtkColorButton *colorbutton)
+{
+    GdkRGBA rgba;
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (colorbutton), &rgba);
+    return _gdk_rgba_to_string (&rgba);
+}
+#else
+static void
+_gdk_color_from_uint (GdkColor *color_gdk,
+                      guint     color)
 {
     color_gdk->pixel = 0;
     color_gdk->red = (color >> 8) & 0xFF00;
@@ -236,32 +280,66 @@ _gdk_color_from_uint (guint     color,
     color_gdk->blue = (color & 0xFF) << 8;
 }
 
+static gchar *
+_gdk_color_to_string (GdkColor *color)
+{
+    return g_strdup_printf ("#%02X%02X%02X",
+                            (color->red & 0xFF00) >> 8,
+                            (color->green & 0xFF00) >> 8,
+                            (color->blue & 0xFF00) >> 8);
+}
+
+static void
+set_color_string (GtkColorButton *colorbutton, const gchar *color)
+{
+    GdkColor cvalue;
+    gdk_color_parse (color, &cvalue);
+    gtk_color_button_set_color (GTK_COLOR_BUTTON (colorbutton), &cvalue);
+}
+
+static void
+set_color_uint (GtkColorButton *colorbutton, guint color)
+{
+    GdkColor cvalue;
+    _gdk_color_from_uint (&cvalue, color);
+    gtk_color_button_set_color (GTK_COLOR_BUTTON (colorbutton), &cvalue);
+}
+
+static gchar *
+get_color_string (GtkColorButton *colorbutton)
+{
+    GdkColor color;
+    gtk_color_button_get_color (colorbutton, &color);
+    return _gdk_color_to_string (&color);
+}
+#endif
+
 static void
 load_color (GVariant        *values,
             GtkToggleButton *togglebutton,
             GtkColorButton  *colorbutton,
             const gchar     *name,
-            GdkColor        *defval)
+            guint            defcol)
 {
     GVariant *value;
     gboolean bvalue;
-    GdkColor cvalue;
-
-    memcpy (&cvalue, defval, sizeof (GdkColor));
 
     bvalue = FALSE;
     value = g_variant_lookup_value (values, name, G_VARIANT_TYPE_STRING);
     if (value != NULL) {
-        const gchar *color = g_variant_get_string (value, NULL);
-        if (g_strcmp0 (color, "none") != 0 &&
-            gdk_color_parse (color, &cvalue))
+        const gchar *svalue = g_variant_get_string (value, NULL);
+        if (g_strcmp0 (svalue, "none") != 0) {
+            set_color_string (colorbutton, svalue);
             bvalue = TRUE;
+        }
         g_variant_unref (value);
+    }
+    if (!bvalue) {
+        set_color_uint (colorbutton, defcol);
     }
 
     gtk_toggle_button_set_active (togglebutton, bvalue);
     gtk_widget_set_sensitive (GTK_WIDGET (colorbutton), bvalue);
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (colorbutton), &cvalue);
 }
 
 static void
@@ -313,7 +391,6 @@ static void
 setup_dialog_load_config (SetupDialog *dialog)
 {
     GVariant *values;
-    GdkColor defcol;
     GtkCellRenderer *renderer;
 
     values = ibus_config_get_values (dialog->config, dialog->section);
@@ -326,22 +403,20 @@ setup_dialog_load_config (SetupDialog *dialog)
 
     /* General -> Pre-edit Appearance */
     /* foreground color of pre-edit buffer */
-    _gdk_color_from_uint (PREEDIT_FOREGROUND, &defcol);
     load_color (values,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_foreground),
                 GTK_COLOR_BUTTON (dialog->colorbutton_foreground),
                 "preedit_foreground",
-                &defcol);
+                PREEDIT_FOREGROUND);
     g_signal_connect (dialog->checkbutton_foreground, "toggled",
                       G_CALLBACK (on_foreground_toggled), dialog);
 
     /* background color of pre-edit buffer */
-    _gdk_color_from_uint (PREEDIT_BACKGROUND, &defcol);
     load_color (values,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_background),
                 GTK_COLOR_BUTTON (dialog->colorbutton_background),
                 "preedit_background",
-                &defcol);
+                PREEDIT_BACKGROUND);
     g_signal_connect (dialog->checkbutton_background, "toggled",
                       G_CALLBACK (on_background_toggled), dialog);
 
@@ -397,15 +472,6 @@ setup_dialog_load_config (SetupDialog *dialog)
     g_variant_unref (values);
 }
 
-static gchar *
-_gdk_color_to_string (GdkColor *color)
-{
-    return g_strdup_printf ("#%02X%02X%02X",
-                            (color->red & 0xFF00) >> 8,
-                            (color->green & 0xFF00) >> 8,
-                            (color->blue & 0xFF00) >> 8);
-}
-
 static void
 save_color (SetupDialog     *dialog,
             GtkToggleButton *togglebutton,
@@ -415,10 +481,9 @@ save_color (SetupDialog     *dialog,
     GVariant *value;
 
     if (gtk_toggle_button_get_active (togglebutton)) {
-        GdkColor color;
-
-        gtk_color_button_get_color (colorbutton, &color);
-        value = g_variant_new_string (_gdk_color_to_string (&color));
+        gchar *color = get_color_string (colorbutton);
+        value = g_variant_new_string (color);
+        g_free (color);
     } else {
         value = g_variant_new_string ("none");
     }
