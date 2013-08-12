@@ -282,7 +282,7 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
                                         "preedit_underline",
                                         G_VARIANT_TYPE_INT32);
         if (value != NULL) {
-            klass->preedit_background = g_variant_get_int32 (value);
+            klass->preedit_underline = g_variant_get_int32 (value);
             g_variant_unref (value);
         }
 
