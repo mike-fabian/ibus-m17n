@@ -98,7 +98,6 @@
           <object class="GtkNotebook" id="pages">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="tab_vborder">3</property>
             <child>
               <object class="GtkAlignment" id="pageGeneral">
                 <property name="visible">True</property>
