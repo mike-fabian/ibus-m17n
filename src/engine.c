@@ -24,6 +24,8 @@ struct _IBusM17NEngine {
 #endif  /* HAVE_SETUP */
     IBusPropList    *prop_list;
     IBusKeymap      *us_keymap;
+    IBusInputPurpose purpose;
+    IBusInputHints   hints;
 };
 
 struct _IBusM17NEngineClass {
@@ -74,6 +76,10 @@ static void ibus_m17n_engine_property_activate
                                             (IBusEngine             *engine,
                                              const gchar            *prop_name,
                                              guint                   prop_state);
+static void ibus_m17n_engine_set_content_type
+                                            (IBusEngine             *engine,
+                                             IBusInputPurpose        purpose,
+                                             IBusInputHints          hints);
 
 static void ibus_m17n_engine_commit_string
                                             (IBusM17NEngine         *m17n,
@@ -224,6 +230,8 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
     engine_class->cursor_down = ibus_m17n_engine_cursor_down;
 
     engine_class->property_activate = ibus_m17n_engine_property_activate;
+
+    engine_class->set_content_type = ibus_m17n_engine_set_content_type;
 
     if (!ibus_m17n_scan_class_name (G_OBJECT_CLASS_NAME (klass),
                                     &lang, &name)) {
@@ -662,6 +670,17 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
         (IBusM17NEngineClass *) G_OBJECT_GET_CLASS (m17n);
     guint original_keyval = keyval;
 
+    switch (m17n->purpose) {
+    case IBUS_INPUT_PURPOSE_PASSWORD:
+    case IBUS_INPUT_PURPOSE_PIN:
+        /* For password and PIN input, skip any further step
+           processing a key event.  */
+        return FALSE;
+
+    default:
+        break;
+    }
+
     if (modifiers & IBUS_RELEASE_MASK)
         return FALSE;
 
@@ -804,6 +823,31 @@ ibus_m17n_engine_property_activate (IBusEngine  *engine,
 #endif  /* HAVE_SETUP */
 
     parent_class->property_activate (engine, prop_name, prop_state);
+}
+
+static void
+ibus_m17n_engine_set_content_type (IBusEngine      *engine,
+                                   IBusInputPurpose purpose,
+                                   IBusInputHints   hints)
+{
+    IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
+
+    m17n->purpose = purpose;
+    m17n->hints = hints;
+
+    switch (purpose) {
+    case IBUS_INPUT_PURPOSE_PASSWORD:
+    case IBUS_INPUT_PURPOSE_PIN:
+        /* For password and PIN input, emulate 'focus-out' to discard
+           any pending input status (e.g. preedit or candidate
+           list).  */
+        ibus_m17n_engine_focus_out (engine);
+        break;
+
+    default:
+        ibus_m17n_engine_focus_in (engine);
+        break;
+    }
 }
 
 static void
