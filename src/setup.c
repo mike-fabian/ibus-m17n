@@ -3,6 +3,7 @@
 #include <config.h>
 #endif
 
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <ibus.h>
 #include <m17n.h>
@@ -32,8 +33,7 @@ struct _SetupDialog {
     MSymbol lang;
     MSymbol name;
 
-    IBusConfig *config;
-    gchar *section;
+    GSettings *gsettings;
 };
 typedef struct _SetupDialog SetupDialog;
 
@@ -315,17 +315,17 @@ get_color_string (GtkColorButton *colorbutton)
 #endif
 
 static void
-load_color (GVariant        *values,
+load_color (GSettings       *gsettings,
             GtkToggleButton *togglebutton,
             GtkColorButton  *colorbutton,
-            const gchar     *name,
+            const gchar     *key,
             guint            defcol)
 {
     GVariant *value;
     gboolean bvalue;
 
     bvalue = FALSE;
-    value = g_variant_lookup_value (values, name, G_VARIANT_TYPE_STRING);
+    value = g_settings_get_value (gsettings, key);
     if (value != NULL) {
         const gchar *svalue = g_variant_get_string (value, NULL);
         if (g_strcmp0 (svalue, "none") != 0) {
@@ -343,9 +343,9 @@ load_color (GVariant        *values,
 }
 
 static void
-load_choice (GVariant    *values,
+load_choice (GSettings   *gsettings,
              GtkComboBox *combo,
-             const gchar *name,
+             const gchar *key,
              gint         defval)
 {
     GVariant *value;
@@ -358,7 +358,7 @@ load_choice (GVariant    *values,
                                     renderer, "text", 0, NULL);
 
     ivalue = defval;
-    value = g_variant_lookup_value (values, name, G_VARIANT_TYPE_INT32);
+    value = g_settings_get_value (gsettings, key);
     if (value != NULL) {
         ivalue = g_variant_get_int32 (value);
         g_variant_unref (value);
@@ -369,16 +369,16 @@ load_choice (GVariant    *values,
 }
 
 static void
-load_toggle (GVariant        *values,
+load_toggle (GSettings       *gsettings,
              GtkToggleButton *togglebutton,
-             const gchar     *name,
+             const gchar     *key,
              gboolean         defval)
 {
     GVariant *value;
     gboolean bvalue;
 
     bvalue = defval;
-    value = g_variant_lookup_value (values, name, G_VARIANT_TYPE_BOOLEAN);
+    value = g_settings_get_value (gsettings, key);
     if (value != NULL) {
         bvalue = g_variant_get_boolean (value);
         g_variant_unref (value);
@@ -390,53 +390,44 @@ load_toggle (GVariant        *values,
 static void
 setup_dialog_load_config (SetupDialog *dialog)
 {
-    GVariant *values;
     GtkCellRenderer *renderer;
-
-    values = ibus_config_get_values (dialog->config, dialog->section);
-    /* ibus_config_get_values may return NULL on failure */
-    if (values == NULL) {
-        GVariantType *child_type = g_variant_type_new ("{sv}");
-        values = g_variant_new_array (child_type, NULL, 0);
-        g_variant_type_free (child_type);
-    }
 
     /* General -> Pre-edit Appearance */
     /* foreground color of pre-edit buffer */
-    load_color (values,
+    load_color (dialog->gsettings,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_foreground),
                 GTK_COLOR_BUTTON (dialog->colorbutton_foreground),
-                "preedit_foreground",
+                "preedit-foreground",
                 PREEDIT_FOREGROUND);
     g_signal_connect (dialog->checkbutton_foreground, "toggled",
                       G_CALLBACK (on_foreground_toggled), dialog);
 
     /* background color of pre-edit buffer */
-    load_color (values,
+    load_color (dialog->gsettings,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_background),
                 GTK_COLOR_BUTTON (dialog->colorbutton_background),
-                "preedit_background",
+                "preedit-background",
                 PREEDIT_BACKGROUND);
     g_signal_connect (dialog->checkbutton_background, "toggled",
                       G_CALLBACK (on_background_toggled), dialog);
 
     /* underline of pre-edit buffer */
-    load_choice (values,
+    load_choice (dialog->gsettings,
                  GTK_COMBO_BOX (dialog->combobox_underline),
-                 "preedit_underline",
+                 "preedit-underline",
                  IBUS_ATTR_UNDERLINE_NONE);
 
     /* General -> Other */
     /* lookup table orientation */
-    load_choice (values,
+    load_choice (dialog->gsettings,
                  GTK_COMBO_BOX (dialog->combobox_orientation),
-                 "lookup_table_orientation",
+                 "lookup-table-orientation",
                  IBUS_ORIENTATION_SYSTEM);
 
     /* Use US keyboard layout */
-    load_toggle (values,
+    load_toggle (dialog->gsettings,
                  GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
-                 "use_us_layout",
+                 "use-us-layout",
                  FALSE);
 
     /* Advanced -> m17n-lib configuration */
@@ -468,15 +459,13 @@ setup_dialog_load_config (SetupDialog *dialog)
 
     g_signal_connect (dialog->treeview, "query-tooltip",
                       G_CALLBACK (on_query_tooltip), NULL);
-
-    g_variant_unref (values);
 }
 
 static void
 save_color (SetupDialog     *dialog,
             GtkToggleButton *togglebutton,
             GtkColorButton  *colorbutton,
-            const gchar     *name)
+            const gchar     *key)
 {
     GVariant *value;
 
@@ -487,16 +476,13 @@ save_color (SetupDialog     *dialog,
     } else {
         value = g_variant_new_string ("none");
     }
-    ibus_config_set_value (dialog->config,
-                           dialog->section,
-                           name,
-                           value);
+    g_settings_set_value (dialog->gsettings, key, value);
 }
 
 static void
 save_choice (SetupDialog *dialog,
              GtkComboBox *combo,
-             const gchar *name)
+             const gchar *key)
 {
     GtkTreeModel *model;
     GtkTreeIter iter;
@@ -508,21 +494,18 @@ save_choice (SetupDialog *dialog,
     gtk_tree_model_get (model, &iter, COLUMN_VALUE, &active, -1);
 
     value = g_variant_new_int32 (active);
-    ibus_config_set_value (dialog->config, dialog->section, name, value);
+    g_settings_set_value (dialog->gsettings, key, value);
 }
 
 static void
 save_toggle (SetupDialog     *dialog,
              GtkToggleButton *togglebutton,
-             const gchar     *name)
+             const gchar     *key)
 {
     GVariant *value;
 
     value = g_variant_new_boolean (gtk_toggle_button_get_active (togglebutton));
-    ibus_config_set_value (dialog->config,
-                           dialog->section,
-                           name,
-                           value);
+    g_settings_set_value (dialog->gsettings, key, value);
 }
 
 static gboolean
@@ -595,26 +578,26 @@ setup_dialog_save_config (SetupDialog *dialog)
     save_color (dialog,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_foreground),
                 GTK_COLOR_BUTTON (dialog->colorbutton_foreground),
-                "preedit_foreground");
+                "preedit-foreground");
     save_color (dialog,
                 GTK_TOGGLE_BUTTON (dialog->checkbutton_background),
                 GTK_COLOR_BUTTON (dialog->colorbutton_background),
-                "preedit_background");
+                "preedit-background");
     save_choice (dialog,
                  GTK_COMBO_BOX (dialog->combobox_underline),
-                 "preedit_underline");
+                 "preedit-underline");
     save_choice (dialog,
                  GTK_COMBO_BOX (dialog->combobox_orientation),
-                 "lookup_table_orientation");
+                 "lookup-table-orientation");
     save_toggle (dialog,
                  GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
-                 "use_us_layout");
+                 "use-us-layout");
     save_m17n_options (dialog);
+    g_settings_sync();
 }
 
 static SetupDialog *
-setup_dialog_new (IBusConfig *config,
-                  MSymbol     lang,
+setup_dialog_new (MSymbol     lang,
                   MSymbol     name)
 {
     GtkBuilder *builder;
@@ -623,12 +606,13 @@ setup_dialog_new (IBusConfig *config,
     GError *error;
 
     dialog = g_slice_new0 (SetupDialog);
-    dialog->config = config;
     dialog->lang = lang;
     dialog->name = name;
-    dialog->section = g_strdup_printf ("engine/M17N/%s/%s",
-                                       msymbol_name (lang),
-                                       msymbol_name (name));
+    dialog->gsettings = g_settings_new_with_path(
+        "org.freedesktop.ibus.engine.m17n",
+        g_strdup_printf ("/org/freedesktop/ibus/engine/m17n/%s/%s/",
+                         msymbol_name (lang),
+                         msymbol_name (name)));
 
     builder = gtk_builder_new ();
     gtk_builder_set_translation_domain (builder, "ibus-m17n");
@@ -669,7 +653,7 @@ static void
 setup_dialog_free (SetupDialog *dialog)
 {
     gtk_widget_destroy (dialog->dialog);
-    g_free (dialog->section);
+    g_object_unref (dialog->gsettings);
     g_object_unref (dialog->store);
     g_slice_free (SetupDialog, dialog);
 }
@@ -677,8 +661,6 @@ setup_dialog_free (SetupDialog *dialog)
 static void
 start (const gchar *engine_name)
 {
-    IBusBus *bus;
-    IBusConfig *config;
     gchar **strv;
     SetupDialog *dialog;
 
@@ -689,12 +671,8 @@ start (const gchar *engine_name)
     g_assert (g_strv_length (strv) == 3);
     g_assert (g_strcmp0 (strv[0], "m17n") == 0);
 
-    bus = ibus_bus_new ();
-    //g_signal_connect (bus, "disconnected", G_CALLBACK (ibus_disconnected_cb), NULL);
-    config = ibus_bus_get_config (bus);
-
     /* strv == {"m17n", lang, name, NULL} */
-    dialog = setup_dialog_new (config, msymbol (strv[1]), msymbol (strv[2]));
+    dialog = setup_dialog_new (msymbol (strv[1]), msymbol (strv[2]));
     g_strfreev (strv);
 
     setup_dialog_load_config (dialog);
@@ -704,8 +682,6 @@ start (const gchar *engine_name)
 
     setup_dialog_save_config (dialog);
     setup_dialog_free (dialog);
-
-    g_object_unref (bus);
 
     M17N_FINI ();
 }

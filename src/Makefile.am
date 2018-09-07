@@ -109,6 +109,7 @@ componentdir = $(datadir)/ibus/component
 EXTRA_DIST = \
 	m17n.xml.in \
 	$(desktop_in_in_files) \
+	$(schemas_DATA) \
 	$(NULL)
 
 DISTCLEANFILES = \
@@ -139,3 +140,21 @@ desktopdir=$(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
+
+schemas_DATA = \
+	org.freedesktop.ibus.engine.m17n.gschema.xml \
+	$(NULL)
+
+schemasdir = $(datadir)/glib-2.0/schemas/
+
+install-data-hook:
+	if test -z "$(DESTDIR)"; then \
+	    glib-compile-schemas $(schemasdir); \
+	fi
+
+uninstall-hook:
+	SCHEMAS_FILES=`ls $(schemasdir)/*.gschema.xml` || true;         \
+	if test -z "$$SCHEMAS_FILES" &&                                 \
+	    test -f $(schemasdir)/gschemas.compiled; then               \
+	    rm $(schemasdir)/gschemas.compiled;                         \
+	fi
