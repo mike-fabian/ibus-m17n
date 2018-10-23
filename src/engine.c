@@ -321,12 +321,18 @@ ibus_m17n_config_value_changed (GSettings           *gsettings,
         if (color != INVALID_COLOR) {
             klass->preedit_foreground = color;
         }
+        else {
+            klass->preedit_foreground = INVALID_COLOR;
+        }
     } else if (g_strcmp0 (key, "preedit-background") == 0) {
         const gchar *hex = g_variant_get_string (value, NULL);
         guint color;
         color = ibus_m17n_parse_color (hex);
         if (color != INVALID_COLOR) {
             klass->preedit_background = color;
+        }
+        else {
+            klass->preedit_background = INVALID_COLOR;
         }
     } else if (g_strcmp0 (key, "preedit-underline") == 0) {
         klass->preedit_underline = g_variant_get_int32 (value);
