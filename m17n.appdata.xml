@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="inputmethod">
+  <id>m17n.xml</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Ibus M17N</name>
+  <summary>M17N input engine for IBus</summary>
+  <description>
+    <p>
+      The multilingualization input method allows entering many
+      languages using the tables from the m17n library.
+    </p>
+  </description>
+  <project_license>GPL-2</project_license>
+  <developer_name>Parag Nemade, Mike FABIAN</developer_name>
+  <update_contact>pnemade@redhat.com, mfabian@redhat.com</update_contact>
+  <url type="homepage">https://github.com/ibus/ibus-m17n</url>
+  <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
+  <url type="help">https://github.com/ibus/ibus-m17n</url>
+  <releases>
+    <release version="1.4.0" date="2018-10-24" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Migrate from IBusConfig to GSettings. Resolves:
+            https://github.com/ibus/ibus-m17n/issues/3
+          </li>
+          <li>
+            Add an option to emulate US layout
+          </li>
+          <li>
+            Fix preedit background colour and underlining
+          </li>
+          <li>
+            Switch off preedit background and foreground correctly if
+            disabled in the setup tool
+          </li>
+          <li>
+            Other minor bug fixes.
+          </li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <translation type="gettext">ibus-m17n</translation>
+</component>
+
