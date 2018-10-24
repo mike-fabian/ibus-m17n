@@ -108,6 +108,7 @@ componentdir = $(datadir)/ibus/component
 
 EXTRA_DIST = \
 	m17n.xml.in \
+	default.xml \
 	$(desktop_in_in_files) \
 	$(schemas_DATA) \
 	$(NULL)
