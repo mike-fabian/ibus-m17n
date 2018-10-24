@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=IBus M17N Setup
-_Comment=Set up IBus M17N engine
+Name=IBus M17N Setup
+Comment=Set up IBus M17N engine
 Exec=@libexecdir@/ibus-setup-m17n
 NoDisplay=true
 Type=Application

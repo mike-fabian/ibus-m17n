@@ -1,5 +1,5 @@
 src/engine.c
 src/m17nutil.c
 src/main.c
-[type: gettext/glade]src/ibus-m17n-preferences.ui
+src/ibus-m17n-preferences.ui
 src/ibus-setup-m17n.desktop.in.in

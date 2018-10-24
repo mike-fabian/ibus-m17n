@@ -133,14 +133,25 @@ m17n.xml: m17n.xml.in
 
 desktop_in_in_files = ibus-setup-m17n.desktop.in.in
 desktop_in_files = $(desktop_in_in_files:.in.in=.in)
+desktop_files = $(desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_in_files): %.desktop.in: %.desktop.in.in Makefile
 	$(AM_V_GEN) $(edit) $< > $@.tmp && mv $@.tmp $@
+$(desktop_in_files):
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $@.in -o $@-t \
+	  -d $(top_srcdir)/po && mv $@-t $@
+
+$(desktop_files):
+	@rm -f $@
+	$(AM_V_GEN) srcdir=''; \
+	  test -f ./$@.in || srcdir=$(srcdir)/; \
+	  $(edit) $${srcdir}$@.in >$@-t && mv $@-t $@
+
+ibus-setup-m17n.desktop.in: ibus-setup-m17n.desktop.in.in
+ibus-setup-m17n.desktop: ibus-setup-m17n.desktop.in
 
 desktopdir=$(datadir)/applications
-desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-
-@INTLTOOL_DESKTOP_RULE@
+desktop_DATA = $(desktop_files)
 
 schemas_DATA = \
 	org.freedesktop.ibus.engine.m17n.gschema.xml \
