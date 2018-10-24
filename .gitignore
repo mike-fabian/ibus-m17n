@@ -34,3 +34,4 @@ stamp-h1
 py-compile
 ibus-m17n*.tar.*
 ibus-m17n.spec
+test-driver
