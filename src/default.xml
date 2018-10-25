@@ -350,6 +350,10 @@
                 <name>m17n:kk:arabic</name>
                 <symbol>قا</symbol>
         </engine>
+        <engine>
+                <name>m17n:kk:kbd</name>
+                <symbol>ҚА</symbol>
+        </engine>
 	<engine>
 		<name>m17n:km:*</name>
 		<symbol>ក</symbol>
