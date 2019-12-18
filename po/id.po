@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2019-12-17 16:29+0100\n"
 "PO-Revision-Date: 2019-12-18 08:25+0000\n"
-"Last-Translator: Rahman Yusri Aftian <aftian9603@gmail.com>\n"
+"Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
 "Language-Team: Indonesian <https://translate.stg.fedoraproject.org/projects/"
 "ibus-m17n/app/id/>\n"
 "Language: id\n"
@@ -57,7 +57,7 @@ msgstr "Prefensi"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
-msgstr ""
+msgstr "Latar depan:"
 
 #: src/ibus-m17n-preferences.ui:181
 msgid "Background:"
@@ -73,7 +73,7 @@ msgstr "<b>Pre-edit Appearance</b>"
 
 #: src/ibus-m17n-preferences.ui:244
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "Orientasi Tabel Pencarian:"
 
 #: src/ibus-m17n-preferences.ui:260
 msgid "Use US keyboard layout"
