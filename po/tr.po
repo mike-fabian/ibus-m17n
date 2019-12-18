@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
+# This file is distributed under the same license as the ibus-m17n package.
+# Oğuz Ersen <oguzersen@protonmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: ibus-m17n 1.4.0\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
+"POT-Creation-Date: 2018-10-24 16:26+0200\n"
+"PO-Revision-Date: 2019-12-17 18:15+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://translate.stg.fedoraproject.org/projects/"
+"ibus-m17n/app/tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+#: src/m17nutil.c:342
+msgid "M17N"
+msgstr "M17N"
+
+#: src/ibus-m17n-preferences.ui:14
+msgid "System"
+msgstr "Sistem"
+
+#: src/ibus-m17n-preferences.ui:18
+msgid "Vertical"
+msgstr "Dikey"
+
+#: src/ibus-m17n-preferences.ui:22
+msgid "Horizontal"
+msgstr "Yatay"
+
+#: src/ibus-m17n-preferences.ui:36
+msgid "Single"
+msgstr "Tek"
+
+#: src/ibus-m17n-preferences.ui:40
+msgid "Double"
+msgstr "Çift"
+
+#: src/ibus-m17n-preferences.ui:44
+msgid "Low"
+msgstr "Düşük"
+
+#: src/ibus-m17n-preferences.ui:48
+msgid "None"
+msgstr "Hiç"
+
+#: src/ibus-m17n-preferences.ui:57
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: src/ibus-m17n-preferences.ui:172
+msgid "Foreground: "
+msgstr "Ön plan: "
+
+#: src/ibus-m17n-preferences.ui:181
+msgid "Background:"
+msgstr "Arka plan:"
+
+#: src/ibus-m17n-preferences.ui:196
+msgid "Underline:"
+msgstr "Altını çiz:"
+
+#: src/ibus-m17n-preferences.ui:211
+msgid "<b>Pre-edit Appearance</b>"
+msgstr "<b>Ön-düzenleme Görünümü</b>"
+
+#: src/ibus-m17n-preferences.ui:244
+msgid "Lookup Table Orientation: "
+msgstr "Arama Tablosu Yönü: "
+
+#: src/ibus-m17n-preferences.ui:260
+msgid "Use US keyboard layout"
+msgstr "US klavye düzenini kullan"
+
+#: src/ibus-m17n-preferences.ui:280
+msgid "<b>Other</b>"
+msgstr "<b>Diğer</b>"
+
+#: src/ibus-m17n-preferences.ui:299
+msgid "General"
+msgstr "Genel"
+
+#: src/ibus-m17n-preferences.ui:347
+msgid "<b>m17n-lib Configuration</b>"
+msgstr "<b>m17n-lib Yapılandırması</b>"
+
+#: src/ibus-m17n-preferences.ui:362
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: src/ibus-setup-m17n.desktop.in.in:3
+msgid "IBus M17N Setup"
+msgstr "IBus M17N Kurulumu"
+
+#: src/ibus-setup-m17n.desktop.in.in:4
+msgid "Set up IBus M17N engine"
+msgstr "IBus M17N motorunu kur"
+
+#: m17n.appdata.xml:5
+msgid "Ibus M17N"
+msgstr "Ibus M17N"
+
+#: m17n.appdata.xml:6
+msgid "M17N input engine for IBus"
+msgstr "IBus için M17N giriş motoru"
+
+#: m17n.appdata.xml:8
+msgid ""
+"The multilingualization input method allows entering many languages using "
+"the tables from the m17n library."
+msgstr ""
+"m17n kütüphanesindeki tabloları kullanarak birçok dille giriş yapılmasını "
+"sağlayan çok dilli giriş yöntemi."
