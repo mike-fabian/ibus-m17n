@@ -6,8 +6,8 @@
   <summary>M17N input engine for IBus</summary>
   <description>
     <p>
-      The multilingualization input method allows entering many
-      languages using the tables from the m17n library.
+      This multilingualization input method allows entering many
+      languages using the input methods from the m17n library.
     </p>
   </description>
   <project_license>GPL-2</project_license>
