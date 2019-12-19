@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2018-10-24 16:26+0200\n"
+"POT-Creation-Date: 2019-12-19 10:03+0100\n"
 "PO-Revision-Date: 2019-12-18 08:04+0000\n"
 "Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.stg.fedoraproject.org/"
@@ -55,7 +55,7 @@ msgid "Preferences"
 msgstr ""
 
 #: src/ibus-m17n-preferences.ui:172
-msgid "Foreground: "
+msgid "Foreground:"
 msgstr ""
 
 #: src/ibus-m17n-preferences.ui:181
@@ -71,7 +71,7 @@ msgid "<b>Pre-edit Appearance</b>"
 msgstr ""
 
 #: src/ibus-m17n-preferences.ui:244
-msgid "Lookup Table Orientation: "
+msgid "Lookup Table Orientation:"
 msgstr ""
 
 #: src/ibus-m17n-preferences.ui:260
@@ -112,6 +112,6 @@ msgstr ""
 
 #: m17n.appdata.xml:8
 msgid ""
-"The multilingualization input method allows entering many languages using "
-"the tables from the m17n library."
+"This multilingualization input method allows entering many languages using "
+"the input methods from the m17n library."
 msgstr ""
