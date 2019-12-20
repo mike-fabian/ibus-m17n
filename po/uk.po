@@ -2,21 +2,22 @@
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
 # Yuri Chornoivan <yurchor@ukr.net>, 2019.
+# Anonymous <noreply@weblate.org>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2019-12-19 10:03+0100\n"
-"PO-Revision-Date: 2019-12-18 07:53+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"PO-Revision-Date: 2019-12-19 22:39+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://translate.stg.fedoraproject.org/projects/"
 "ibus-m17n/app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 
 #: src/m17nutil.c:342
@@ -112,10 +113,6 @@ msgid "M17N input engine for IBus"
 msgstr "Рушій обробки вхідних даних M17N для IBus"
 
 #: m17n.appdata.xml:8
-#, fuzzy
-#| msgid ""
-#| "The multilingualization input method allows entering many languages using "
-#| "the tables from the m17n library."
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
