@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the ibus-m17n package.
 # Yuri Chornoivan <yurchor@ukr.net>, 2019.
 # Anonymous <noreply@weblate.org>, 2019.
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2019-12-19 10:03+0100\n"
-"PO-Revision-Date: 2019-12-19 22:39+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2019-12-20 00:06+0000\n"
+"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: Ukrainian <https://translate.stg.fedoraproject.org/projects/"
 "ibus-m17n/app/uk/>\n"
 "Language: uk\n"
@@ -113,6 +114,7 @@ msgid "M17N input engine for IBus"
 msgstr "Рушій обробки вхідних даних M17N для IBus"
 
 #: m17n.appdata.xml:8
+#, fuzzy
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
