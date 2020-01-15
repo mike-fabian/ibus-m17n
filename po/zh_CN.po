@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the PACKAGE package.
-# Mike FABIAN <mfabian@redhat.com>, 2019.
+# Mike FABIAN <mfabian@redhat.com>, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2019-12-19 10:03+0100\n"
-"PO-Revision-Date: 2019-12-18 08:04+0000\n"
+"PO-Revision-Date: 2020-01-14 14:15+0000\n"
 "Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.stg.fedoraproject.org/"
 "projects/ibus-m17n/app/zh_CN/>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 3.10.1\n"
 
 #: src/m17nutil.c:342
 msgid "M17N"
-msgstr ""
+msgstr "M17N"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
