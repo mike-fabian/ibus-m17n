@@ -17,6 +17,20 @@
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
   <url type="help">https://github.com/ibus/ibus-m17n</url>
   <releases>
+    <release version="1.4.2" date="2020-01-20" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            New translations: tr (Turkish) 100%, uk (Ukrainian) 100%,
+            id (Indonesian) 100%, ja_JP (Japanese) 100%.
+          </li>
+          <li>
+            Translation updates: zh_CN, pt_BR
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.1" date="2018-10-25" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
