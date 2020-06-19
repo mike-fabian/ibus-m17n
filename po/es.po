@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2019-12-19 10:03+0100\n"
-"PO-Revision-Date: 2020-06-07 14:40+0000\n"
+"PO-Revision-Date: 2020-06-19 12:40+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "ibus-m17n/app/es/>\n"
@@ -80,38 +80,40 @@ msgstr "Usar el diseño de teclado US"
 
 #: src/ibus-m17n-preferences.ui:280
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>Otro</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>Configuración m17n-lib</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "Avanzado"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "Ajuste IBus M17N"
 
 #: src/ibus-setup-m17n.desktop.in.in:4
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "Ajuste motor IBus M17N"
 
 #: m17n.appdata.xml:5
 msgid "Ibus M17N"
-msgstr ""
+msgstr "Ibus M17N"
 
 #: m17n.appdata.xml:6
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "Entrada de motor M17N para IBus"
 
 #: m17n.appdata.xml:8
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"Este método de multilingüismo permite la introducción de muchos lenguajes "
+"usando los métodos de entrada de la librería m17n."
