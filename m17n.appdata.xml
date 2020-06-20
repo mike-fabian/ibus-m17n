@@ -17,6 +17,16 @@
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
   <url type="help">https://github.com/ibus/ibus-m17n</url>
   <releases>
+    <release version="1.4.3" date="2020-06-20" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            New translation: es (Spanish) 100%
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.2" date="2020-01-20" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
