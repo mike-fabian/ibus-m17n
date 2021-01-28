@@ -17,6 +17,16 @@
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
   <url type="help">https://github.com/ibus/ibus-m17n</url>
   <releases>
+    <release version="1.4.4" date="2021-01-28" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate, zh_CN now 100% complete.
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.3" date="2020-06-20" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
