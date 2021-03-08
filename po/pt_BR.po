@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2020.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2020, 2021.
 # Mike FABIAN <mfabian@redhat.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2020-06-20 14:56+0200\n"
-"PO-Revision-Date: 2020-01-14 14:15+0000\n"
-"Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
-"Language-Team: Portuguese (Brazil) <https://translate.stg.fedoraproject.org/"
+"PO-Revision-Date: 2021-03-08 02:01+0000\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
 "projects/ibus-m17n/app/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.10.1\n"
+"X-Generator: Weblate 4.5.1\n"
 
 #: src/m17nutil.c:342
 msgid "M17N"
@@ -25,94 +25,96 @@ msgstr "M17N"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
-msgstr ""
+msgstr "Vertical"
 
 #: src/ibus-m17n-preferences.ui:22
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontal"
 
 #: src/ibus-m17n-preferences.ui:36
 msgid "Single"
-msgstr ""
+msgstr "Único"
 
 #: src/ibus-m17n-preferences.ui:40
 msgid "Double"
-msgstr ""
+msgstr "Duplo"
 
 #: src/ibus-m17n-preferences.ui:44
 msgid "Low"
-msgstr ""
+msgstr "Baixo"
 
 #: src/ibus-m17n-preferences.ui:48
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: src/ibus-m17n-preferences.ui:57
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
-msgstr ""
+msgstr "Cor de seleção:"
 
 #: src/ibus-m17n-preferences.ui:181
 msgid "Background:"
-msgstr ""
+msgstr "Cor de fundo:"
 
 #: src/ibus-m17n-preferences.ui:196
 msgid "Underline:"
-msgstr ""
+msgstr "Sublinhado:"
 
 #: src/ibus-m17n-preferences.ui:211
 msgid "<b>Pre-edit Appearance</b>"
-msgstr ""
+msgstr "<b>Aparência da pré-edição</b>"
 
 #: src/ibus-m17n-preferences.ui:244
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "Orientação da tabela de pesquisa:"
 
 #: src/ibus-m17n-preferences.ui:260
 msgid "Use US keyboard layout"
-msgstr ""
+msgstr "Usar disposição de teclado EUA"
 
 #: src/ibus-m17n-preferences.ui:280
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>Outro</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>Configuração de m17n-lib</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "Avançado"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "Configuração do IBus M17N"
 
 #: src/ibus-setup-m17n.desktop.in.in:4
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "Configure o motor IBus M17N"
 
 #: m17n.appdata.xml:5
 msgid "Ibus M17N"
-msgstr ""
+msgstr "Ibus M17N"
 
 #: m17n.appdata.xml:6
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "Motor de entrada M17N para IBus"
 
 #: m17n.appdata.xml:8
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"O método de entrada de multilingualização permite inserir vários idiomas "
+"usando os métodos de entrada da biblioteca m17n."
