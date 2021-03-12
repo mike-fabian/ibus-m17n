@@ -251,9 +251,7 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
         PREEDIT_BACKGROUND :
         INVALID_COLOR;
     klass->preedit_underline = IBUS_ATTR_UNDERLINE_NONE;
-    klass->preedit_focus_mode = engine_config->preedit_highlight ?
-        IBUS_ENGINE_PREEDIT_COMMIT :
-        IBUS_ENGINE_PREEDIT_CLEAR;
+    klass->preedit_focus_mode = IBUS_ENGINE_PREEDIT_COMMIT;
     klass->lookup_table_orientation = IBUS_ORIENTATION_SYSTEM;
     klass->use_us_layout = FALSE;
 
