@@ -17,6 +17,30 @@
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
   <url type="help">https://github.com/ibus/ibus-m17n</url>
   <releases>
+    <release version="1.4.5" date="2021-03-12" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Use ibus_engine_update_preedit_with_mode() *always* with
+            IBUS_ENGINE_PREEDIT_COMMIT mode
+
+            Even if the preedit *is* highlighted it is not natural to
+            discard the preedit when the focus moves to a different
+            window. Committing the preedit feels better.
+          </li>
+          <li>
+            Translation update from Weblate, bn new and 100% complete,
+            pt_BR now 100% complete.
+          </li>
+          <li>
+            Remove redundant target for desktop.in file.  It will be
+            done in desktop file generation since switched to
+            gettext-0.19.
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.4" date="2021-01-28" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
