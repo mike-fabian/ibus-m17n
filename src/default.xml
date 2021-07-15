@@ -178,6 +178,12 @@
 		<name>m17n:te:inscript</name>
 		<rank>2</rank>
 	</engine>
+	<!-- Assign higher rank to all inscript2 engines since
+             they should be preferred over the inscript engines. -->
+	<engine>
+		<name>m17n:*:inscript2</name>
+		<rank>3</rank>
+	</engine>
 	<!-- Assign lower rank to Sinhala Samanala since it is a
 	     non-keyboard input method in Sinhala. -->
 	<engine>
