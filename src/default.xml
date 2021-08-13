@@ -12,6 +12,12 @@
 		<preedit-highlight>FALSE</preedit-highlight>
 		<symbol></symbol>
 	</engine>
+        <!-- Arabic kbd engine should be selected by default:
+             https://bugzilla.redhat.com/show_bug.cgi?id=1076945 -->
+        <engine>
+                <name>m17n:ar:kbd</name>
+                <rank>1</rank>
+        </engine>
 	<!-- Blacklist some engines -->
 	<!-- kbd engines are duplicate of xkb engines -->
 	<engine>
