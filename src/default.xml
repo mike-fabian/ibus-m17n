@@ -239,60 +239,96 @@
 	</engine>
 	<!-- Set IME symbols. -->
 	<engine>
+		<name>m17n:*:kbd</name>
+		<symbol></symbol>
+	</engine>
+	<engine>
 		<name>m17n:as:*</name>
-		<symbol>অ</symbol>
+		<symbol>ক</symbol>
 	</engine>
 	<engine>
 		<name>m17n:bn:*</name>
-		<symbol>বা</symbol>
+		<symbol>ক</symbol>
+	</engine>
+	<engine>
+		<name>m17n:brx:*</name>
+		<symbol>क</symbol>
+	</engine>
+	<engine>
+		<name>m17n:doi:*</name>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:gu:*</name>
-		<symbol>ગુ</symbol>
+		<symbol>ક</symbol>
 	</engine>
 	<engine>
 		<name>m17n:hi:*</name>
-		<symbol>हिं</symbol>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:kn:*</name>
 		<symbol>ಕ</symbol>
 	</engine>
 	<engine>
+		<name>m17n:kok:*</name>
+		<symbol>क</symbol>
+	</engine>
+	<engine>
 		<name>m17n:ks:*</name>
 		<symbol>क</symbol>
 	</engine>
 	<engine>
+		<name>m17n:ks:kbd</name>
+		<symbol>خ</symbol>
+	</engine>
+	<engine>
 		<name>m17n:mai:*</name>
-		<symbol>मै</symbol>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:ml:*</name>
-		<symbol>മ</symbol>
+		<symbol>ക</symbol>
+	</engine>
+	<engine>
+		<name>m17n:mni:*beng</name>
+		<symbol>ক</symbol>
+	</engine>
+	<engine>
+		<name>m17n:mni:*mtei</name>
+		<symbol>ꯀ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:mr:*</name>
-		<symbol>म</symbol>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:ne:*</name>
-		<symbol>ने</symbol>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:or:*</name>
-		<symbol>ଓ</symbol>
+		<symbol>କ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:pa:*</name>
-		<symbol>ਪੰ</symbol>
+		<symbol>ਕ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:sa:*</name>
-		<symbol>सं</symbol>
+		<symbol>क</symbol>
+	</engine>
+	<engine>
+		<name>m17n:sat:inscript2-deva</name>
+		<symbol>क</symbol>
+	</engine>
+	<engine>
+		<name>m17n:sat:inscript2-olck</name>
+		<symbol>ᱚ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:sd:*</name>
-		<symbol>सिं</symbol>
+		<symbol>क</symbol>
 	</engine>
 	<engine>
 		<name>m17n:si:*</name>
@@ -300,15 +336,11 @@
 	</engine>
 	<engine>
 		<name>m17n:ta:*</name>
-		<symbol>த</symbol>
+		<symbol>க</symbol>
 	</engine>
 	<engine>
 		<name>m17n:te:*</name>
-		<symbol>తె</symbol>
-	</engine>
-	<engine>
-		<name>m17n:*:kbd</name>
-		<symbol></symbol>
+		<symbol>క</symbol>
 	</engine>
 	<engine>
 		<name>m17n:*:pre</name>
@@ -328,7 +360,7 @@
 	</engine>
 	<engine>
 		<name>m17n:cr:*</name>
-		<symbol></symbol>
+		<symbol>ᐃ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:dv:*</name>
@@ -348,11 +380,11 @@
 	</engine>
 	<engine>
 		<name>m17n:ii:*</name>
-		<symbol></symbol>
+		<symbol>ꆈ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:iu:*</name>
-		<symbol></symbol>
+		<symbol>ᐃ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:ja:anthy</name>
@@ -375,20 +407,24 @@
 		<symbol>ក</symbol>
 	</engine>
 	<engine>
-		<name>m17n:lo:*</name>
+		<name>m17n:lo:kbd</name>
+		<symbol>ລ</symbol>
+	</engine>
+	<engine>
+		<name>m17n:lo:lrt</name>
 		<symbol>ກ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:nsk:*</name>
-		<symbol></symbol>
+		<symbol>ᐃ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:oj:*</name>
-		<symbol></symbol>
+		<symbol>ᐏ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:ps:*</name>
-		<symbol></symbol>
+		<symbol>خ</symbol>
 	</engine>
 	<engine>
 		<name>m17n:ru:*</name>
@@ -415,6 +451,10 @@
 		<symbol>خ</symbol>
 	</engine>
 	<engine>
+		<name>m17n:vi:*</name>
+		<symbol>ắ</symbol>
+	</engine>
+	<engine>
 		<name>m17n:vi:han</name>
 		<symbol>越</symbol>
 	</engine>
@@ -423,12 +463,8 @@
 		<symbol>喃</symbol>
 	</engine>
 	<engine>
-		<name>m17n:vi:*</name>
-		<symbol>ắ</symbol>
-	</engine>
-	<engine>
 		<name>m17n:yi:*</name>
-		<symbol></symbol>
+		<symbol>ש</symbol>
 	</engine>
 	<engine>
 		<name>m17n:zh:bopomofo</name>
