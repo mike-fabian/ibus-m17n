@@ -20,6 +20,9 @@ struct _IBusM17NEngineConfig {
     /* overridding longname shown on panel */
     gchar *longname;
 
+    /* keyboard layout */
+    gchar *layout;
+
     /* whether to highlight preedit */
     gboolean preedit_highlight;
 };
