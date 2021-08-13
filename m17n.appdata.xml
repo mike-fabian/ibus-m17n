@@ -17,6 +17,27 @@
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
   <url type="help">https://github.com/ibus/ibus-m17n</url>
   <releases>
+    <release version="1.4.7" date="2021-08-13" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+      </description>
+      <url>github.com/ibus/ibus-m17n/releases/tag/1.4.7</url>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/34">
+          Assign symbols to all the new inscript2 engines (and add
+          some other missing symbols)
+        </issue>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/32">
+          Allow to use kbd engines (#32)
+        </issue>
+        <issue>
+          Add ibus-m17n-xkb-options.patch from Fedora
+        </issue>
+        <issue>
+          Add ibus-m17n-enable-ar-kbd.patch from Fedora
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.6" date="2021-07-15" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
