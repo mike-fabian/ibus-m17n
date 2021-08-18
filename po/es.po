@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2020-06-20 14:56+0200\n"
+"POT-Creation-Date: 2021-08-13 19:52+0200\n"
 "PO-Revision-Date: 2020-06-19 12:40+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/ibus-"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.0.4\n"
 
-#: src/m17nutil.c:342
+#: src/m17nutil.c:351
 msgid "M17N"
 msgstr "M17N"
 
