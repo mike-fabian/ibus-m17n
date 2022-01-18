@@ -41,6 +41,7 @@ struct _IBusM17NEngineClass {
     gint lookup_table_orientation;
     gboolean use_us_layout;
 
+    gchar *title;
     MInputMethod *im;
 };
 
@@ -237,7 +238,10 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
         "org.freedesktop.ibus.engine.m17n",
         g_strdup_printf ("/org/freedesktop/ibus/engine/m17n/%s/%s/",
                          lang, name));
-
+    MPlist *l = minput_get_title_icon (msymbol (lang), msymbol (name));
+    if (l && mplist_key (l) == Mtext) {
+        klass->title = ibus_m17n_mtext_to_utf8 (mplist_value (l));
+    }
     engine_name = g_strdup_printf ("m17n:%s:%s", lang, name);
     g_free (lang);
     g_free (name);
@@ -965,8 +969,9 @@ ibus_m17n_engine_callback (MInputContext *context,
     else if (command == Minput_status_draw) {
         gchar *status;
         status = ibus_m17n_mtext_to_utf8 (m17n->context->status);
+        IBusM17NEngineClass *klass = (IBusM17NEngineClass *) G_OBJECT_GET_CLASS (m17n);
 
-        if (status && strlen (status)) {
+        if (status && strlen (status) && g_strcmp0 (status, klass->title)) {
             IBusText *text;
             text = ibus_text_new_from_string (status);
             ibus_property_set_label (m17n->status_prop, text);
