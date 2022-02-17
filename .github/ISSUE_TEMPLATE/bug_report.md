@@ -26,6 +26,9 @@ If applicable, add screenshots or videos to help explain your problem.
 **ibus-m17n version?**
 Check the version of the installed package, for example using `rpm -q ibus-m17n` on rpm based distribtions.
 
+**m17n-db versions?**
+Check the versions of the installed `m17n-db*` packages, for example using `rpm -q m17n-db m17n-db-extras` on rpm based distributions.
+
 **ibus version?**
 Run `ibus version` (Or check the version of the installed package, for example using `rpm -q ibus` on rpm based distribtions).
 
