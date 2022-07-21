@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
-# Mike FABIAN <mfabian@redhat.com>, 2019, 2020.
+# Mike FABIAN <mfabian@redhat.com>, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2021-08-13 19:52+0200\n"
-"PO-Revision-Date: 2020-09-11 08:29+0000\n"
+"PO-Revision-Date: 2022-07-21 06:42+0000\n"
 "Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/ibus-m17n/app/zh_TW/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.13\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -24,7 +24,7 @@ msgstr "M17N"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "系統"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
