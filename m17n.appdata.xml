@@ -32,6 +32,42 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.10" date="2022-08-03" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+      </description>
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.10</url>
+      <issues>
+        <issue>
+          Add language to longname in --xml output to make engines
+          which have exactly the same icon distinguishable in the
+          engine switcher.
+        </issue>
+        <issue>
+          Show also the engine name in the title of the setup tool
+          window.
+
+          I.e. instead of just “Preferences” show something like
+          “Preferences m17n:t:latn-post”.
+        </issue>
+        <issue>
+          Make the icon of the current engine appear at the left of
+          floating panel of ibus.
+
+          And also show the full engine name as a tooltip on that icon.
+
+          Before only a generic gear wheel ⚙️ was shown, the same for
+          all engines, so one could not distinguish which engine was
+          selected in the floating panel.
+        </issue>
+        <issue>
+          Better icon and a screenshot which can be shown in gnome-software
+        </issue>
+        <issue>
+          Improvements in m17n.appdata.xml
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.9" date="2022-01-18" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
