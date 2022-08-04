@@ -42,6 +42,10 @@ struct _IBusM17NEngineClass {
     gboolean use_us_layout;
 
     gchar *title;
+    gchar *icon;
+    gchar *lang;
+    gchar *name;
+    gchar *engine_name;
     MInputMethod *im;
 };
 
@@ -242,7 +246,20 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
     if (l && mplist_key (l) == Mtext) {
         klass->title = ibus_m17n_mtext_to_utf8 (mplist_value (l));
     }
+    else {
+        klass->title = NULL;
+    }
+    MPlist *n = mplist_next (l);
+    if (n && mplist_key (n) == Mtext) {
+        klass->icon = ibus_m17n_mtext_to_utf8 (mplist_value (n));
+    }
+    else {
+        klass->icon = NULL;
+    }
     engine_name = g_strdup_printf ("m17n:%s:%s", lang, name);
+    klass->engine_name = g_strdup (engine_name);
+    klass->lang = g_strdup (lang);
+    klass->name = g_strdup (name);
     g_free (lang);
     g_free (name);
     engine_config = ibus_m17n_get_engine_config (engine_name);
@@ -352,15 +369,16 @@ ibus_m17n_engine_init (IBusM17NEngine *m17n)
 {
     IBusText* label;
     IBusText* tooltip;
+    IBusM17NEngineClass *klass = (IBusM17NEngineClass *) G_OBJECT_GET_CLASS (m17n);
 
     m17n->prop_list = ibus_prop_list_new ();
     g_object_ref_sink (m17n->prop_list);
 
     m17n->status_prop = ibus_property_new ("status",
                                            PROP_TYPE_NORMAL,
-                                           NULL,
-                                           NULL,
-                                           NULL,
+                                           ibus_text_new_from_string (klass->engine_name),
+                                           klass->icon,
+                                           ibus_text_new_from_string (klass->engine_name),
                                            TRUE,
                                            FALSE,
                                            0,
