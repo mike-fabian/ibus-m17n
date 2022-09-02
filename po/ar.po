@@ -17,98 +17,100 @@ msgstr ""
 
 #: src/m17nutil.c:351
 msgid "M17N"
-msgstr ""
+msgstr "تعددية اللغات (M17N)"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "نظام"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
-msgstr ""
+msgstr "رأسي"
 
 #: src/ibus-m17n-preferences.ui:22
 msgid "Horizontal"
-msgstr ""
+msgstr "أفقي"
 
 #: src/ibus-m17n-preferences.ui:36
 msgid "Single"
-msgstr ""
+msgstr "وحيد"
 
 #: src/ibus-m17n-preferences.ui:40
 msgid "Double"
-msgstr ""
+msgstr "مزدوج"
 
 #: src/ibus-m17n-preferences.ui:44
 msgid "Low"
-msgstr ""
+msgstr "منخفض"
 
 #: src/ibus-m17n-preferences.ui:48
 msgid "None"
-msgstr ""
+msgstr "بدون"
 
 #: src/ibus-m17n-preferences.ui:57
 msgid "Preferences"
-msgstr ""
+msgstr "خياراات"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
-msgstr ""
+msgstr "الواجهة:"
 
 #: src/ibus-m17n-preferences.ui:181
 msgid "Background:"
-msgstr ""
+msgstr "الخلفية:"
 
 #: src/ibus-m17n-preferences.ui:196
 msgid "Underline:"
-msgstr ""
+msgstr "خط تحتي:"
 
 #: src/ibus-m17n-preferences.ui:211
 msgid "<b>Pre-edit Appearance</b>"
-msgstr ""
+msgstr "<b>مظهر ما قبل التعديل</b>"
 
 #: src/ibus-m17n-preferences.ui:244
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "اتجاه واجهة البحث:"
 
 #: src/ibus-m17n-preferences.ui:260
 msgid "Use US keyboard layout"
-msgstr ""
+msgstr "استخدم توزيع لوحة المفاتيح الأمريكي"
 
 #: src/ibus-m17n-preferences.ui:280
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>أخرى</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "عام"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>إعدادات m17n-lib</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "متقدم"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "إعداد IBus M17N"
 
 #: src/ibus-setup-m17n.desktop.in.in:4
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "إعداد محرك IBus M17N"
 
 #: m17n.appdata.xml:5
 msgid "Ibus M17N"
-msgstr ""
+msgstr "Ibus M17N"
 
 #: m17n.appdata.xml:6
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "محرك المدخلات متعدد اللغات (M17N) الخاص بـIBus"
 
 #: m17n.appdata.xml:8
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"وضع الإدخال متعدد اللغات يسمح بإدخال العديد من اللغات باستخدام طرق الإدخال "
+"من مكتبة m17n."
