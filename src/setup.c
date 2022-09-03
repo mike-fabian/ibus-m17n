@@ -658,15 +658,11 @@ setup_dialog_free (SetupDialog *dialog)
     g_slice_free (SetupDialog, dialog);
 }
 
-#define WINDOW_TITLE_SIZE 500
-
 static void
 start (const gchar *engine_name)
 {
     gchar **strv;
     SetupDialog *dialog;
-    const gchar *base_window_title;
-    gchar full_window_title[WINDOW_TITLE_SIZE] = "";
 
     ibus_init ();
     ibus_m17n_init_common ();
@@ -681,14 +677,11 @@ start (const gchar *engine_name)
 
     setup_dialog_load_config (dialog);
 
-    base_window_title = gtk_window_get_title(GTK_WINDOW (dialog->dialog));
-    strncat(full_window_title, base_window_title,
-            WINDOW_TITLE_SIZE - 1);
-    strncat(full_window_title, " ",
-            WINDOW_TITLE_SIZE - strlen(base_window_title) - 1);
-    strncat(full_window_title, engine_name,
-            WINDOW_TITLE_SIZE - strlen(base_window_title) - 2);
-    gtk_window_set_title(GTK_WINDOW (dialog->dialog), full_window_title);
+    gtk_window_set_title(
+        GTK_WINDOW (dialog->dialog),
+        g_strdup_printf("%s %s",
+                        gtk_window_get_title(GTK_WINDOW (dialog->dialog)),
+                        engine_name));
     gtk_window_present (GTK_WINDOW (dialog->dialog));
     gtk_dialog_run (GTK_DIALOG (dialog->dialog));
 
