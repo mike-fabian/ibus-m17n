@@ -17,98 +17,100 @@ msgstr ""
 
 #: src/m17nutil.c:351
 msgid "M17N"
-msgstr ""
+msgstr "M17N"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "სისტემა"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
-msgstr ""
+msgstr "ვერტიკალური"
 
 #: src/ibus-m17n-preferences.ui:22
 msgid "Horizontal"
-msgstr ""
+msgstr "ჰორიზონტალური"
 
 #: src/ibus-m17n-preferences.ui:36
 msgid "Single"
-msgstr ""
+msgstr "ერთი"
 
 #: src/ibus-m17n-preferences.ui:40
 msgid "Double"
-msgstr ""
+msgstr "ორმაგი"
 
 #: src/ibus-m17n-preferences.ui:44
 msgid "Low"
-msgstr ""
+msgstr "დაბალი"
 
 #: src/ibus-m17n-preferences.ui:48
 msgid "None"
-msgstr ""
+msgstr "არაფერი"
 
 #: src/ibus-m17n-preferences.ui:57
 msgid "Preferences"
-msgstr ""
+msgstr "მორგება"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
-msgstr ""
+msgstr "წინა პლანი:"
 
 #: src/ibus-m17n-preferences.ui:181
 msgid "Background:"
-msgstr ""
+msgstr "ფონი:"
 
 #: src/ibus-m17n-preferences.ui:196
 msgid "Underline:"
-msgstr ""
+msgstr "ხაზგასმული:"
 
 #: src/ibus-m17n-preferences.ui:211
 msgid "<b>Pre-edit Appearance</b>"
-msgstr ""
+msgstr "<b>გარეგნობა ჩასწორებამდე</b>"
 
 #: src/ibus-m17n-preferences.ui:244
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "საძებნი ცხრილის ორიენტაცია:"
 
 #: src/ibus-m17n-preferences.ui:260
 msgid "Use US keyboard layout"
-msgstr ""
+msgstr "აშშ კლავიატურის განლაგების გამოყენება"
 
 #: src/ibus-m17n-preferences.ui:280
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>სხვა</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "მთავარი"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>m17n-lib -ის მორგება</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "დამატებითი"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "IBus M17N -ის მორგება"
 
 #: src/ibus-setup-m17n.desktop.in.in:4
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "მოირგეთ IBus M17N ძრავა"
 
 #: m17n.appdata.xml:5
 msgid "Ibus M17N"
-msgstr ""
+msgstr "Ibus M17N"
 
 #: m17n.appdata.xml:6
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "M17N -ის შეყვანის ძრავა IBus -სთვის"
 
 #: m17n.appdata.xml:8
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"მრავალენოვანი შეყვანის მეთოდი m17n ბიბლიოთეკიდან, რომლებიც ბევრი ენით "
+"შეყვანის საშუალებას გაძლევთ."
