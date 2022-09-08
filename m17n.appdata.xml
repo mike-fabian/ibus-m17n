@@ -33,6 +33,17 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.13" date="2022-09-08" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+      </description>
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.13</url>
+      <issues>
+        <issue>
+          Translation update from Weblate (ar updated 100%, ka added 100%)
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.11" date="2022-09-03" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
