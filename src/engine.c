@@ -14,7 +14,7 @@ typedef struct _IBusM17NEngine IBusM17NEngine;
 typedef struct _IBusM17NEngineClass IBusM17NEngineClass;
 
 struct _IBusM17NEngine {
-    IBusEngine parent;
+    IBusEngineSimple parent;
 
     /* members */
     MInputContext *context;
@@ -30,7 +30,7 @@ struct _IBusM17NEngine {
 };
 
 struct _IBusM17NEngineClass {
-    IBusEngineClass parent;
+    IBusEngineSimpleClass parent;
 
     /* configurations are per class */
     GSettings *gsettings;
@@ -94,7 +94,7 @@ static void ibus_m17n_engine_update_preedit (IBusM17NEngine *m17n);
 static void ibus_m17n_engine_update_lookup_table
                                             (IBusM17NEngine *m17n);
 
-static IBusEngineClass *parent_class = NULL;
+static IBusEngineSimpleClass *parent_class = NULL;
 
 void
 ibus_m17n_init (IBusBus *bus)
@@ -185,10 +185,10 @@ ibus_m17n_engine_get_type_for_name (const gchar *engine_name)
     g_free (name);
 
     type = g_type_from_name (type_name);
-    g_assert (type == 0 || g_type_is_a (type, IBUS_TYPE_ENGINE));
+    g_assert (type == 0 || g_type_is_a (type, IBUS_TYPE_ENGINE_SIMPLE));
 
     if (type == 0) {
-        type = g_type_register_static (IBUS_TYPE_ENGINE,
+        type = g_type_register_static (IBUS_TYPE_ENGINE_SIMPLE,
                                        type_name,
                                        &type_info,
                                        (GTypeFlags) 0);
@@ -208,7 +208,7 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
     IBusM17NEngineConfig *engine_config;
 
     if (parent_class == NULL)
-        parent_class = (IBusEngineClass *) g_type_class_peek_parent (klass);
+        parent_class = (IBusEngineSimpleClass *) g_type_class_peek_parent (klass);
 
     object_class->constructor = ibus_m17n_engine_constructor;
     ibus_object_class->destroy = (IBusObjectDestroyFunc) ibus_m17n_engine_destroy;
@@ -695,6 +695,21 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
         break;
     }
 
+    if (IBUS_ENGINE_CLASS (parent_class)->process_key_event (engine, keyval, keycode, modifiers)) {
+      if (mtext_len (m17n->context->preedit) > 0) {
+	gchar *buf;
+	buf = ibus_m17n_mtext_to_utf8 (m17n->context->preedit);
+	if (buf) {
+	  IBusText *text;
+	  text = ibus_text_new_from_string (buf);
+	  ibus_engine_commit_text (engine, text);
+	  g_free (buf);
+	}
+	minput_reset_ic (m17n->context);
+      }
+      return TRUE;
+    }
+
     if (modifiers & IBUS_RELEASE_MASK)
         return FALSE;
 
@@ -733,7 +748,7 @@ ibus_m17n_engine_focus_in (IBusEngine *engine)
     ibus_engine_register_properties (engine, m17n->prop_list);
     ibus_m17n_engine_process_key (m17n, Minput_focus_in);
 
-    parent_class->focus_in (engine);
+    IBUS_ENGINE_CLASS (parent_class)->focus_in (engine);
 }
 
 static void
@@ -746,7 +761,7 @@ ibus_m17n_engine_focus_out (IBusEngine *engine)
        m17n-lib. */
     minput_reset_ic (m17n->context);
 
-    parent_class->focus_out (engine);
+    IBUS_ENGINE_CLASS (parent_class)->focus_out (engine);
 }
 
 static void
@@ -754,7 +769,7 @@ ibus_m17n_engine_reset (IBusEngine *engine)
 {
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
-    parent_class->reset (engine);
+    IBUS_ENGINE_CLASS (parent_class)->reset (engine);
 
     minput_reset_ic (m17n->context);
 }
@@ -762,7 +777,7 @@ ibus_m17n_engine_reset (IBusEngine *engine)
 static void
 ibus_m17n_engine_enable (IBusEngine *engine)
 {
-    parent_class->enable (engine);
+    IBUS_ENGINE_CLASS (parent_class)->enable (engine);
 
     /* Issue a dummy ibus_engine_get_surrounding_text() call to tell
        input context that we will use surrounding-text. */
@@ -773,7 +788,7 @@ static void
 ibus_m17n_engine_disable (IBusEngine *engine)
 {
     ibus_m17n_engine_focus_out (engine);
-    parent_class->disable (engine);
+    IBUS_ENGINE_CLASS (parent_class)->disable (engine);
 }
 
 static void
@@ -782,7 +797,7 @@ ibus_m17n_engine_page_up (IBusEngine *engine)
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
     ibus_m17n_engine_process_key (m17n, msymbol ("Up"));
-    parent_class->page_up (engine);
+    IBUS_ENGINE_CLASS (parent_class)->page_up (engine);
 }
 
 static void
@@ -792,7 +807,7 @@ ibus_m17n_engine_page_down (IBusEngine *engine)
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
     ibus_m17n_engine_process_key (m17n, msymbol ("Down"));
-    parent_class->page_down (engine);
+    IBUS_ENGINE_CLASS (parent_class)->page_down (engine);
 }
 
 static void
@@ -802,7 +817,7 @@ ibus_m17n_engine_cursor_up (IBusEngine *engine)
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
     ibus_m17n_engine_process_key (m17n, msymbol ("Left"));
-    parent_class->cursor_up (engine);
+    IBUS_ENGINE_CLASS (parent_class)->cursor_up (engine);
 }
 
 static void
@@ -812,7 +827,7 @@ ibus_m17n_engine_cursor_down (IBusEngine *engine)
     IBusM17NEngine *m17n = (IBusM17NEngine *) engine;
 
     ibus_m17n_engine_process_key (m17n, msymbol ("Right"));
-    parent_class->cursor_down (engine);
+    IBUS_ENGINE_CLASS (parent_class)->cursor_down (engine);
 }
 
 static void
@@ -836,7 +851,7 @@ ibus_m17n_engine_property_activate (IBusEngine  *engine,
     }
 #endif  /* HAVE_SETUP */
 
-    parent_class->property_activate (engine, prop_name, prop_state);
+    IBUS_ENGINE_CLASS (parent_class)->property_activate (engine, prop_name, prop_state);
 }
 
 static void
