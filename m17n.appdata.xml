@@ -33,6 +33,21 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.17" date="2022-09-17" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+      </description>
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.17</url>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/52">
+          Fix problem that sa-IAST input method cannot be activated and
+          make settings of sa-IAST work.
+        </issue>
+        <issue url="https://github.com/ibus/ibus-m17n/pull/51">
+          Let IBusM17nEngine inherit from IBusEngineSimple to enable compose support
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.13" date="2022-09-08" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
