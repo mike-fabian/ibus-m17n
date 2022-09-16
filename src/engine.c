@@ -160,6 +160,7 @@ ibus_m17n_engine_get_type_for_name (const gchar *engine_name)
 {
     GType type;
     gchar *type_name, *lang = NULL, *name = NULL;
+    int i;
 
     GTypeInfo type_info = {
         sizeof (IBusM17NEngineClass),
@@ -177,6 +178,12 @@ ibus_m17n_engine_get_type_for_name (const gchar *engine_name)
         g_free (lang);
         g_free (name);
         return G_TYPE_INVALID;
+    }
+    for (i = 0; lang[i] != '\0'; i++) {
+      lang[i] = g_ascii_tolower (lang[i]);
+    }
+    for (i = 0; name[i] != '\0'; i++) {
+      name[i] = g_ascii_tolower (name[i]);
     }
     lang[0] = g_ascii_toupper (lang[0]);
     name[0] = g_ascii_toupper (name[0]);
@@ -238,24 +245,46 @@ ibus_m17n_engine_class_init (IBusM17NEngineClass *klass)
         g_free (name);
         return;
     }
+    MPlist *l = minput_get_title_icon (msymbol (lang), msymbol (name));
+    if (l == NULL) {
+      /*
+	If finding the icon did not work, try it in all upper case.
+	This is a silly hack to make it work with /usr/share/sa-iast.mim which
+	contains (input-method sa IAST ) and has the icon: /usr/share/m17n/icons/sa-IAST.png
+	Without this hack, the gsettings for sa-IAST do not work either.
+	See also: https://github.com/ibus/ibus-m17n/issues/52
+      */
+      int i;
+      gchar *name_uppercase;
+      name_uppercase = g_strdup (name);
+      for (i = 0; name_uppercase[i] != '\0'; i++) {
+	name_uppercase[i] = g_ascii_toupper(name_uppercase[i]);
+      }
+      l = minput_get_title_icon (msymbol (lang), msymbol (name_uppercase));
+      if (l) {
+	g_free(name);
+	name = g_strdup (name_uppercase);
+      }
+      g_free (name_uppercase);
+    }
+    if (l && mplist_key (l) == Mtext) {
+        klass->title = ibus_m17n_mtext_to_utf8 (mplist_value (l));
+        MPlist *n = mplist_next (l);
+        if (n && mplist_key (n) == Mtext) {
+            klass->icon = ibus_m17n_mtext_to_utf8 (mplist_value (n));
+        }
+        else {
+            klass->icon = NULL;
+        }
+    }
+    else {
+        klass->title = NULL;
+        klass->icon = NULL;
+    }
     klass->gsettings = g_settings_new_with_path (
         "org.freedesktop.ibus.engine.m17n",
         g_strdup_printf ("/org/freedesktop/ibus/engine/m17n/%s/%s/",
                          lang, name));
-    MPlist *l = minput_get_title_icon (msymbol (lang), msymbol (name));
-    if (l && mplist_key (l) == Mtext) {
-        klass->title = ibus_m17n_mtext_to_utf8 (mplist_value (l));
-    }
-    else {
-        klass->title = NULL;
-    }
-    MPlist *n = mplist_next (l);
-    if (n && mplist_key (n) == Mtext) {
-        klass->icon = ibus_m17n_mtext_to_utf8 (mplist_value (n));
-    }
-    else {
-        klass->icon = NULL;
-    }
     engine_name = g_strdup_printf ("m17n:%s:%s", lang, name);
     klass->engine_name = g_strdup (engine_name);
     klass->lang = g_strdup (lang);
@@ -380,9 +409,17 @@ ibus_m17n_engine_init (IBusM17NEngine *m17n)
                                            klass->icon,
                                            ibus_text_new_from_string (klass->engine_name),
                                            TRUE,
-                                           FALSE,
-                                           0,
+                                           TRUE,
+                                           PROP_STATE_UNCHECKED,
                                            NULL);
+    /*
+      If a text instead of an icon should be shown at the status property
+      a symbol needs to be set
+    */
+    /*
+    ibus_property_set_symbol(m17n->status_prop,
+			     ibus_text_new_from_string (klass->engine_name));
+    */
     g_object_ref_sink (m17n->status_prop);
     ibus_prop_list_append (m17n->prop_list,  m17n->status_prop);
 
