@@ -19,19 +19,23 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA  02111-1307  USA
 
-# ibus-m17n.png is the parrot.png from: https://www.nongnu.org/m17n/parrot.png
+# m17n-upstream-logo.png is the parrot.png from: https://www.nongnu.org/m17n/parrot.png
 # resized to 128x128 with:
 #
-#    convert ibus-m17n.png -resize 128x128\! ibus-m17n-new.png
+#    convert parrot.png -resize 128x128\! parrot-new.png
 
 SUBDIRS = \
 	$(NULL)
 
 icons_DATA = \
-	ibus-m17n.png \
+	m17n-upstream-logo.png \
+	ibus-m17n.svg \
 	$(NULL)
 
 iconsdir = $(pkgdatadir)/icons
+
+hicolor_icon_scalable_DATA = ibus-m17n.svg
+hicolor_icon_scalabledir = $(datadir)/icons/hicolor/scalable/apps
 
 hicolor_icon_16_DATA = 16x16/ibus-m17n.png
 hicolor_icon_16dir = $(datadir)/icons/hicolor/16x16/apps
