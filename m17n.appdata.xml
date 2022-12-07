@@ -33,6 +33,17 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.18" date="2022-12-07" urgency="medium">
+      <description>
+        <p>This new stable release includes these changes:</p>
+      </description>
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.18</url>
+      <issues>
+        <issue>
+          Add new icon
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.17" date="2022-09-17" urgency="medium">
       <description>
         <p>This new stable release includes these changes:</p>
