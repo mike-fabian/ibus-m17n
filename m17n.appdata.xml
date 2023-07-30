@@ -17,7 +17,7 @@
   </keywords>
   <screenshots>
     <screenshot type="default">
-      <image type="source" xml:lang="en">
+      <image type="source">
         https://raw.githubusercontent.com/ibus/ibus-m17n/main/screenshots/hi-itrans-screenshot.png
       </image>
       <caption>ibus-m17n screenshot</caption>
