@@ -575,7 +575,7 @@ ibus_m17n_engine_commit_string (IBusM17NEngine *m17n,
                                 const gchar    *string)
 {
     IBusText *text;
-    text = ibus_text_new_from_static_string (string);
+    text = ibus_text_new_from_string (string);
     ibus_engine_commit_text ((IBusEngine *)m17n, text);
     ibus_m17n_engine_update_preedit (m17n);
 }
