@@ -552,7 +552,7 @@ ibus_m17n_engine_update_preedit (IBusM17NEngine *m17n)
 
     buf = ibus_m17n_mtext_to_utf8 (m17n->context->preedit);
     if (buf) {
-        text = ibus_text_new_from_static_string (buf);
+        text = ibus_text_new_from_string (buf);
         if (klass->preedit_foreground != INVALID_COLOR)
             ibus_text_append_attribute (text, IBUS_ATTR_TYPE_FOREGROUND,
                                         klass->preedit_foreground, 0, -1);
@@ -567,6 +567,7 @@ ibus_m17n_engine_update_preedit (IBusM17NEngine *m17n)
                                                    mtext_len (m17n->context->preedit) > 0,
                                                    klass->preedit_focus_mode);
     }
+    g_free (buf);
 }
 
 static void
