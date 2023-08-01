@@ -592,7 +592,7 @@ ibus_m17n_engine_commit_string (IBusM17NEngine *m17n,
        if (code == altgr)
          ...
      }
-                
+
    Since IBus engines are supposed to be cross-platform, the code
    should go into IBus core, instead of ibus-m17n. */
 static MSymbol
@@ -734,18 +734,18 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
     }
 
     if (IBUS_ENGINE_CLASS (parent_class)->process_key_event (engine, keyval, keycode, modifiers)) {
-      if (mtext_len (m17n->context->preedit) > 0) {
-	gchar *buf;
-	buf = ibus_m17n_mtext_to_utf8 (m17n->context->preedit);
-	if (buf) {
-	  IBusText *text;
-	  text = ibus_text_new_from_string (buf);
-	  ibus_engine_commit_text (engine, text);
-	  g_free (buf);
-	}
-	minput_reset_ic (m17n->context);
-      }
-      return TRUE;
+        if (mtext_len (m17n->context->preedit) > 0) {
+            gchar *buf;
+            buf = ibus_m17n_mtext_to_utf8 (m17n->context->preedit);
+            if (buf) {
+                IBusText *text;
+                text = ibus_text_new_from_string (buf);
+                ibus_engine_commit_text (engine, text);
+                g_free (buf);
+            }
+            minput_reset_ic (m17n->context);
+        }
+        return TRUE;
     }
 
     if (modifiers & IBUS_RELEASE_MASK)
