@@ -577,6 +577,20 @@ ibus_m17n_engine_commit_string (IBusM17NEngine *m17n,
     IBusText *text;
     text = ibus_text_new_from_string (string);
     ibus_engine_commit_text ((IBusEngine *)m17n, text);
+    /*
+      Updating the preedit after commit is necessary because some
+      applications (OpenOffice.org or Evolution) expect that
+      "preedit-changed" is signalled after "commit" and clear
+      applications' preedit buffers on "commit".  However, ibus-m17n
+      (possibly other IME) may signal "commit" just after
+      "preedit-changed". So we need to make sure to signal
+      "preedit-changed" after "commit".
+
+      Test case: type "iupap,h" on oowriter with
+      "m17n:si:wijesekera - si-wijesekera (m17n)".
+      You won't see the n+1’th character in the preedit buffer updating
+      the preedit after commit.
+    */
     ibus_m17n_engine_update_preedit (m17n);
 }
 
