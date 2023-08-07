@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2022-09-17 20:44+0200\n"
+"POT-Creation-Date: 2023-07-30 20:35+0200\n"
 "PO-Revision-Date: 2020-01-18 16:32+0000\n"
 "Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: French <https://translate.stg.fedoraproject.org/projects/ibus-"
@@ -102,15 +102,15 @@ msgstr "Configuration d’IBus M17N"
 msgid "Set up IBus M17N engine"
 msgstr "Configurer le moteur IBus M17N"
 
-#: m17n.appdata.xml:5
+#: m17n.appdata.xml:6
 msgid "Ibus M17N"
 msgstr "Ibus M17N"
 
-#: m17n.appdata.xml:6
+#: m17n.appdata.xml:7
 msgid "M17N input engine for IBus"
 msgstr "Moteur d’entrée M17N pour IBus"
 
-#: m17n.appdata.xml:8
+#: m17n.appdata.xml:9
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."

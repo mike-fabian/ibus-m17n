@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.3\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2022-09-17 20:44+0200\n"
+"POT-Creation-Date: 2023-07-30 20:35+0200\n"
 "PO-Revision-Date: 2021-04-04 09:01+0000\n"
 "Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
 "Language-Team: Bengali <https://translate.fedoraproject.org/projects/ibus-"
@@ -102,15 +102,15 @@ msgstr "আইবাস এম17এন সেটআপ"
 msgid "Set up IBus M17N engine"
 msgstr "আইবাস এম17এন ইঞ্জিন সেট আপ করুন"
 
-#: m17n.appdata.xml:5
+#: m17n.appdata.xml:6
 msgid "Ibus M17N"
 msgstr "আইবাস এম১৭এন"
 
-#: m17n.appdata.xml:6
+#: m17n.appdata.xml:7
 msgid "M17N input engine for IBus"
 msgstr "আইবাসের জন্য এম১৭এন ইনপুট ইঞ্জিন"
 
-#: m17n.appdata.xml:8
+#: m17n.appdata.xml:9
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
