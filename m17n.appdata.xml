@@ -34,6 +34,17 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.22" date="2023-08-21" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.22</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate (Lithuanian, lt 100%)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.21" date="2023-08-07" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.21</url>
       <description>
