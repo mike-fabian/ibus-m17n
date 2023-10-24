@@ -17,98 +17,100 @@ msgstr ""
 
 #: src/m17nutil.c:351
 msgid "M17N"
-msgstr ""
+msgstr "एम17एन"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "प्रणाली"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
-msgstr ""
+msgstr "खड़ा"
 
 #: src/ibus-m17n-preferences.ui:22
 msgid "Horizontal"
-msgstr ""
+msgstr "क्षैतिज"
 
 #: src/ibus-m17n-preferences.ui:36
 msgid "Single"
-msgstr ""
+msgstr "अकेला"
 
 #: src/ibus-m17n-preferences.ui:40
 msgid "Double"
-msgstr ""
+msgstr "दोगुना"
 
 #: src/ibus-m17n-preferences.ui:44
 msgid "Low"
-msgstr ""
+msgstr "कम"
 
 #: src/ibus-m17n-preferences.ui:48
 msgid "None"
-msgstr ""
+msgstr "कुछ नहीं"
 
 #: src/ibus-m17n-preferences.ui:57
 msgid "Preferences"
-msgstr ""
+msgstr "पसंद"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
-msgstr ""
+msgstr "अग्रभूमि:"
 
 #: src/ibus-m17n-preferences.ui:181
 msgid "Background:"
-msgstr ""
+msgstr "पृष्ठभूमि:"
 
 #: src/ibus-m17n-preferences.ui:196
 msgid "Underline:"
-msgstr ""
+msgstr "रेखांकन:"
 
 #: src/ibus-m17n-preferences.ui:211
 msgid "<b>Pre-edit Appearance</b>"
-msgstr ""
+msgstr "<b>पूर्व-संपादन उपस्थिति</b>"
 
 #: src/ibus-m17n-preferences.ui:244
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "लुकअप टेबल ओरिएंटेशन:"
 
 #: src/ibus-m17n-preferences.ui:260
 msgid "Use US keyboard layout"
-msgstr ""
+msgstr "यूएस कीबोर्ड लेआउट का उपयोग करें"
 
 #: src/ibus-m17n-preferences.ui:280
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>अन्य</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>m17n-lib कॉन्फ़िगरेशन</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "उन्नत"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "आईबीस एम17एन सेटअप"
 
 #: src/ibus-setup-m17n.desktop.in.in:4
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "आईबीस एम17एन इंजन सेट करें"
 
 #: m17n.appdata.xml:6
 msgid "Ibus M17N"
-msgstr ""
+msgstr "आईबीस एम17एन"
 
 #: m17n.appdata.xml:7
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "आईबस के लिए एम17एन इनपुट इंजन"
 
 #: m17n.appdata.xml:9
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"यह बहुभाषीकरण इनपुट विधि एम17एन लाइब्रेरी से इनपुट विधियों का उपयोग करके कई भाषाओं में "
+"प्रवेश करने की अनुमति देती है।"
