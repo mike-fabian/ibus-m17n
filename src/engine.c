@@ -747,6 +747,12 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
         break;
     }
 
+    if (klass->use_us_layout) {
+        keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
+                                            keycode,
+                                            modifiers);
+    }
+
     /*
       Compose support:
 
@@ -788,12 +794,6 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
 
     if (modifiers & IBUS_RELEASE_MASK)
         return FALSE;
-
-    if (klass->use_us_layout) {
-        keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
-                                            keycode,
-                                            modifiers);
-    }
 
     MSymbol m17n_key = ibus_m17n_key_event_to_symbol (m17n,
                                                       keycode,
