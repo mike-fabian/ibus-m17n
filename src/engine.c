@@ -748,9 +748,18 @@ ibus_m17n_engine_process_key_event (IBusEngine     *engine,
     }
 
     if (klass->use_us_layout) {
-        keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
-                                            keycode,
-                                            modifiers);
+        if (g_strcmp0 (ibus_keyval_name (keyval), "Multi_key") != 0) {
+            /*
+              Do not translate the Multi_key: If the non-US layout has
+              a Multi_key, trying to translate it to US layout just
+              takes it away. Skipping the translation keeps the
+              Multi_key around which is more useful, it can still be
+              used for Compose then.
+             */
+            keyval = ibus_keymap_lookup_keysym (m17n->us_keymap,
+                                                keycode,
+                                                modifiers);
+        }
     }
 
     /*
