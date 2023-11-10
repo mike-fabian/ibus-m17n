@@ -26,7 +26,9 @@
   <icon type="remote" width="128" height="128">https://raw.githubusercontent.com/ibus/ibus-m17n/main/icons/128x128/ibus-m17n.png</icon>
   <icon type="remote" width="256" height="256">https://raw.githubusercontent.com/ibus/ibus-m17n/main/icons/256x256/ibus-m17n.png</icon>
   <project_license>GPL-2</project_license>
-  <developer_name>Parag Nemade, Mike FABIAN</developer_name>
+  <developer>
+    <name>Parag Nemade, Mike FABIAN</name>
+  </developer>
   <update_contact>pnemade@redhat.com, mfabian@redhat.com</update_contact>
   <url type="homepage">https://github.com/ibus/ibus-m17n</url>
   <url type="bugtracker">https://github.com/ibus/ibus-m17n/issues</url>
