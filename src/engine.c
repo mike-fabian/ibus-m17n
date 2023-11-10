@@ -443,6 +443,8 @@ ibus_m17n_engine_init (IBusM17NEngine *m17n)
     g_object_ref_sink (m17n->table);
     m17n->context = NULL;
     m17n->us_keymap = ibus_keymap_get ("us");
+    /* Load $HOME/.XCompose file: */
+    ibus_engine_simple_add_table_by_locale ((IBusEngineSimple *) m17n, NULL);
 }
 
 static GObject*
