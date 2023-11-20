@@ -3,6 +3,7 @@
 #include <config.h>
 #endif
 
+#include <time.h>
 #include <gio/gio.h>
 #include <ibus.h>
 #include <m17n.h>
@@ -720,6 +721,7 @@ ibus_m17n_engine_process_key (IBusM17NEngine *m17n,
     gchar *buf;
     MText *produced;
     gint retval;
+    gchar *sym_name = msymbol_name (key);
 
     retval = minput_filter (m17n->context, key, NULL);
 
@@ -739,11 +741,62 @@ ibus_m17n_engine_process_key (IBusM17NEngine *m17n,
     buf = ibus_m17n_mtext_to_utf8 (produced);
     m17n_object_unref (produced);
 
+    if (retval && buf && strlen (buf)) {
+        /*
+          Prefer commit to "return FALSE;" for space and other
+          keys where the msymbol name is exactly one character to
+          avoid ordering problems in Mutter, see:
+          https://github.com/ibus/ibus-m17n/issues/72
+
+          The keys where the msymbol name is exactly one character
+          should include all keys which result in just a plain Unicode
+          value with no modifiers pressed (Key combinations with
+          modifiers have msymbol names longer than one character, for
+          example Control+a has the msymbol name "C-a") and it should
+          exclude all control characters like Return and Tab.
+        */
+        gchar *commit_string = NULL;
+        if (strlen (sym_name) == 1) {
+            commit_string = g_strconcat (buf, sym_name, NULL);
+        }
+        else if (g_strcmp0 (sym_name, "KP_Space") == 0) {
+            commit_string = g_strconcat (buf, " ", NULL);
+        }
+        if (commit_string) {
+            ibus_m17n_engine_commit_string (m17n, commit_string);
+            g_free (commit_string);
+            g_free (buf);
+            ibus_m17n_engine_hide_preedit_if_empty (m17n);
+            return TRUE;
+        }
+    }
+
     if (buf && strlen (buf)) {
         ibus_m17n_engine_commit_string (m17n, buf);
     }
-    g_free (buf);
+
     ibus_m17n_engine_hide_preedit_if_empty (m17n);
+
+    if (retval && buf && strlen (buf)) {
+        /*
+          We have a key event here which caused a commit
+          but handling it by appending to the commit string
+          was not possible (For example Return or KP_Enter
+          or keys where modifiers were pressed).
+
+          But a sleep of 0.1 seconds between the commit and passing
+          through that key event helps Mutter to guess which actions
+          belong together and get the order right. So this mostly
+          "fixes" the problem as well.  A sleep is not so nice, but as
+          these key events are rare that sleep should not hurt much.
+        */
+        struct timespec delay;
+        delay.tv_sec = 0;
+        delay.tv_nsec = 100000000; // 100,000,000 nanoseconds = 0.1 seconds
+        nanosleep (&delay, NULL);
+    }
+    g_free (buf);
+
     return retval == 0;
 }
 
