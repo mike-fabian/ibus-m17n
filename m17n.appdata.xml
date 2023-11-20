@@ -36,6 +36,25 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.27" date="2023-12-02" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.27</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Prefer commit to "return FALSE;" for space, and other keys
+            where the msymbol name is exactly one character, add a
+            sleep for Return.  This is to avoid ordering problems in
+            mutter (Resolves: github-issue#72)
+          </li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/72">
+          github-issue#72
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.24" date="2023-10-28" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.24</url>
       <description>
