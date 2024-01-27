@@ -36,6 +36,25 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.28" date="2024-01-27" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.28</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate (Russian (ru), new, 100%)
+          </li>
+          <li>
+            Build against gtk3 by default (Resolves: github-issue#73)
+          </li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/73">
+          github-issue#73
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.27" date="2023-12-02" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.27</url>
       <description>
