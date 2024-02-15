@@ -2,13 +2,15 @@
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
 # Vadim tr <rth28291@tuta.io>, 2024.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.24\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2023-11-10 18:06+0100\n"
 "PO-Revision-Date: 2024-02-15 13:32+0000\n"
-"Last-Translator: Vadim tr <rth28291@tuta.io>\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/"
 "ibus-m17n/app/ru/>\n"
 "Language: ru\n"
@@ -25,15 +27,15 @@ msgstr "M17N"
 
 #: src/ibus-m17n-preferences.ui:14
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: src/ibus-m17n-preferences.ui:18
 msgid "Vertical"
-msgstr ""
+msgstr "Вертикальная"
 
 #: src/ibus-m17n-preferences.ui:22
 msgid "Horizontal"
-msgstr ""
+msgstr "Горизонтальная"
 
 #: src/ibus-m17n-preferences.ui:36
 msgid "Single"
@@ -49,11 +51,11 @@ msgstr "Нижнее"
 
 #: src/ibus-m17n-preferences.ui:48
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: src/ibus-m17n-preferences.ui:57
 msgid "Preferences"
-msgstr ""
+msgstr "Параметры"
 
 #: src/ibus-m17n-preferences.ui:172
 msgid "Foreground:"
@@ -85,7 +87,7 @@ msgstr "<b>Другое</b>"
 
 #: src/ibus-m17n-preferences.ui:299
 msgid "General"
-msgstr ""
+msgstr "Основные"
 
 #: src/ibus-m17n-preferences.ui:347
 msgid "<b>m17n-lib Configuration</b>"
@@ -93,7 +95,7 @@ msgstr "<b>m17n-lib Configuration</b>"
 
 #: src/ibus-m17n-preferences.ui:362
 msgid "Advanced"
-msgstr ""
+msgstr "Дополнительно"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "IBus M17N Setup"
