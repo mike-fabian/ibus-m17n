@@ -26,7 +26,7 @@
   <icon type="remote" width="128" height="128">https://raw.githubusercontent.com/ibus/ibus-m17n/main/icons/128x128/ibus-m17n.png</icon>
   <icon type="remote" width="256" height="256">https://raw.githubusercontent.com/ibus/ibus-m17n/main/icons/256x256/ibus-m17n.png</icon>
   <project_license>GPL-2</project_license>
-  <developer>
+  <developer id="io.github.ibus-m17n">
     <name>Parag Nemade, Mike FABIAN</name>
   </developer>
   <update_contact>pnemade@redhat.com, mfabian@redhat.com</update_contact>
@@ -36,6 +36,18 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.29" date="2024-04-10" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.29</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate (Malayalam (ml), new,
+            100%, Swedish (sv) 100%)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.28" date="2024-01-27" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.28</url>
       <description>
