@@ -36,6 +36,22 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.30" date="2024-07-19" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.30</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Name of Sinhala input method changed: si-wijesekera ➡️
+            si-wijesekara (This changes comes when m17n-db is updated
+            to 1.8.6)
+          </li>
+          <li>
+            Translation update from Weblate (si 100%)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.29" date="2024-04-10" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.29</url>
       <description>
