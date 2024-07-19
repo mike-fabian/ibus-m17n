@@ -40,7 +40,7 @@ typedef struct _SetupDialog SetupDialog;
 static gchar *opt_name = NULL;
 static const GOptionEntry options[] = {
     {"name", '\0', 0, G_OPTION_ARG_STRING, &opt_name,
-     "IBus engine name like \"m17n:si:wijesekera\"."},
+     "IBus engine name like \"m17n:si:wijesekara\"."},
     {NULL}
 };
 

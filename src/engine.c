@@ -609,7 +609,7 @@ ibus_m17n_engine_commit_string (IBusM17NEngine *m17n,
       "preedit-changed" after "commit".
 
       Test case: type "iupap,h" on oowriter with
-      "m17n:si:wijesekera - si-wijesekera (m17n)".
+      "m17n:si:wijesekara - si-wijesekara (m17n)".
       You won't see the n+1’th character in the preedit buffer updating
       the preedit after commit.
     */

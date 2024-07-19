@@ -35,7 +35,7 @@ test_engine_config (void)
     g_assert_cmpint (config->preedit_highlight, ==, 0);
     ibus_m17n_engine_config_free (config);
 
-    config = ibus_m17n_get_engine_config ("m17n:si:wijesekera");
+    config = ibus_m17n_get_engine_config ("m17n:si:wijesekara");
     g_assert_cmpint (config->rank, ==, 2);
     g_assert_cmpint (config->preedit_highlight, ==, 0);
     ibus_m17n_engine_config_free (config);
