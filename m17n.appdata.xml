@@ -36,6 +36,17 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.31" date="2024-07-15" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.31</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate (new: cs 100%)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.30" date="2024-07-19" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.30</url>
       <description>
