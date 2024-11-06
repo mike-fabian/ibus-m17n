@@ -675,8 +675,23 @@ ibus_m17n_key_event_to_symbol (IBusM17NEngine *m17n,
             g_string_free (keysym, TRUE);
             return Mnil;
         }
-        mask |= modifiers & (IBUS_CONTROL_MASK | IBUS_SHIFT_MASK);
         g_string_append (keysym, name);
+        mask |= modifiers & IBUS_CONTROL_MASK;
+        if (modifiers & IBUS_SHIFT_MASK) {
+            const gunichar unicode = ibus_keyval_to_unicode (keyval);
+            if (!g_unichar_isgraph(unicode)) {
+                /*
+                  https://github.com/ibus/ibus-m17n/issues/90
+                  Add IBUS_SHIFT_MASK only if the unicode character is not “graph”,
+                  that means it is either a space or not printable.
+                  Do not add it for other characters, for example if Shift+ü has
+                  been typed, the keysym is “Udiaeresis” and the Shift has been
+                  absorbed in the uppercase, adding IBUS_SHIFT_MASK would result
+                  in the msymbol “S-Udiaeresis”, which would be wrong.
+                 */
+                mask |= IBUS_SHIFT_MASK;
+            }
+        }
     }
 
     mask |= modifiers & (IBUS_MOD1_MASK |
@@ -707,7 +722,6 @@ ibus_m17n_key_event_to_symbol (IBusM17NEngine *m17n,
     if (mask & IBUS_SHIFT_MASK) {
         g_string_prepend (keysym, "S-");
     }
-
     mkeysym = msymbol (keysym->str);
     g_string_free (keysym, TRUE);
 
