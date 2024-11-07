@@ -36,6 +36,24 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.34" date="2024-11-07" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.34</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Add the “S-” prefix to msymbols for non-ASCII characters
+            only if the character “is not graph” (Resolves:
+            github-issue#90)
+          </li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/90">
+          github-issue#90
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.33" date="2024-09-20" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.33</url>
       <description>
