@@ -193,7 +193,7 @@
 	</engine>
 	<!-- Some Indic engines expect AltGr is automatically mapped -->
 	<engine>
-		<name>m17n:*:inscript*</name>
+		<name>m17n:*:*inscript*</name>
 		<layout>default[lv3:ralt_switch]</layout>
 	</engine>
 	<engine>
