@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.0\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2024-09-08 17:39+0200\n"
+"POT-Creation-Date: 2025-01-20 23:30+0100\n"
 "PO-Revision-Date: 2025-01-20 22:46+0000\n"
 "Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/"
-"ibus-m17n/app/de/>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/ibus-"
+"m17n/app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,15 +105,15 @@ msgstr "IBus M17n Einstellungen"
 msgid "Set up IBus M17N engine"
 msgstr "IBus M17N Einstellungen"
 
-#: m17n.appdata.xml:6
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:6
 msgid "Ibus M17N"
 msgstr "IBus M17N"
 
-#: m17n.appdata.xml:7
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:7
 msgid "M17N input engine for IBus"
 msgstr "M17N Eingabemethode für IBus"
 
-#: m17n.appdata.xml:9
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:9
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
