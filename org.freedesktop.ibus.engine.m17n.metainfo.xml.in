@@ -36,6 +36,34 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.35" date="2025-01-20" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.35</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Generate translations into metainfo.xml files with autotools
+            (Related: github-mike-fabian-issue#2)
+          </li>
+          <li>
+            Rename m17n.appdata.xml to
+            org.freedesktop.ibus.engine.m17n.metainfo.xml (Resolves:
+            github-mike-fabian-issue#2)
+          </li>
+          <li>
+            Fix match pattern for layout for inscript
+          </li>
+          <li>
+            Fix match pattern for rank for inscript2
+          </li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/mike-fabian/ibus-m17n/issues/2">
+          github-mike-fabian-issue#2
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.34" date="2024-11-07" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.34</url>
       <description>
