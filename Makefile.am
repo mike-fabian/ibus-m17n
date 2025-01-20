@@ -29,16 +29,15 @@ ACLOCAL_AMFLAGS = -I m4
 
 # To register as an AppStream component to be visible in the software center
 # (See http://www.freedesktop.org/software/appstream/docs/ for more details):
-appdata_DATA = \
-	m17n.appdata.xml \
+metainfodir = $(datadir)/metainfo
+metainfo_DATA = \
+	org.freedesktop.ibus.engine.m17n.metainfo.xml \
 	$(NULL)
-
-appdatadir = $(datadir)/metainfo
 
 EXTRA_DIST = \
 	autogen.sh \
 	@PACKAGE_NAME@.spec.in \
-	$(appdata_DATA) \
+	$(metainfo_DATA) \
 	$(NULL)
 
 noinst_DIST = \
