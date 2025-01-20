@@ -33,5 +33,6 @@ missing
 stamp-h1
 py-compile
 ibus-m17n*.tar.*
+*.metainfo.xml
 ibus-m17n.spec
 test-driver

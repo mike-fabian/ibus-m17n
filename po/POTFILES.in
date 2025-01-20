@@ -3,4 +3,4 @@ src/m17nutil.c
 src/main.c
 src/ibus-m17n-preferences.ui
 src/ibus-setup-m17n.desktop.in.in
-org.freedesktop.ibus.engine.m17n.metainfo.xml
+org.freedesktop.ibus.engine.m17n.metainfo.xml.in
