@@ -36,6 +36,17 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.36" date="2025-04-07" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.36</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Translation update from Weblate (new: fi 100%, kab 100%)
+          </li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.35" date="2025-01-20" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.35</url>
       <description>
