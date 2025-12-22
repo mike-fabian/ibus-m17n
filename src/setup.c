@@ -19,15 +19,25 @@ enum {
 };
 
 struct _SetupDialog {
-    GtkWidget *dialog;
-    GtkWidget *combobox_underline;
-    GtkWidget *combobox_orientation;
-    GtkWidget *checkbutton_foreground;
-    GtkWidget *colorbutton_foreground;
-    GtkWidget *checkbutton_background;
-    GtkWidget *colorbutton_background;
-    GtkWidget *checkbutton_use_us_layout;
-    GtkWidget *treeview;
+    GtkWindow *dialog;
+#if GTK_API_MAJOR >= 4
+    GtkButton       *button_close;
+    GtkDropDown     *combobox_underline;
+    GtkDropDown     *combobox_orientation;
+    GtkCheckButton  *checkbutton_foreground;
+    GtkCheckButton  *checkbutton_background;
+    GtkCheckButton  *checkbutton_use_us_layout;
+#else
+    GtkComboBox     *combobox_underline;
+    GtkComboBox     *combobox_orientation;
+    GtkToggleButton *checkbutton_foreground;
+    GtkToggleButton *checkbutton_background;
+    GtkToggleButton *checkbutton_use_us_layout;
+#endif
+    GtkColorButton *colorbutton_background;
+    GtkColorButton *colorbutton_foreground;
+
+    GtkTreeView *treeview;
     GtkListStore *store;
 
     MSymbol lang;
@@ -132,24 +142,29 @@ insert_m17n_items (GtkListStore *store, MSymbol language, MSymbol name)
 }
 
 static gboolean
-on_query_tooltip (GtkWidget  *widget,
+on_query_tooltip (GtkTreeView *treeview,
                   gint        x,
                   gint        y,
                   gboolean    keyboard_tip,
                   GtkTooltip *tooltip,
                   gpointer    user_data)
 {
-    GtkTreeView *treeview = GTK_TREE_VIEW (widget);
     GtkTreeModel *model = gtk_tree_view_get_model (treeview);
     GtkTreePath *path = NULL;
     GtkTreeIter iter;
     gchar *description;
-
-    if (!gtk_tree_view_get_tooltip_context (treeview, &x, &y,
+#if GTK_API_MAJOR >= 4
+    if (!gtk_tree_view_get_tooltip_context (treeview, x, y,
                                             keyboard_tip,
                                             &model, &path, &iter))
         return FALSE;
-
+#else
+    if (!gtk_tree_view_get_tooltip_context (treeview,
+                                            &x, &y,
+                                            keyboard_tip,
+                                            &model, &path, &iter))
+        return FALSE;
+#endif
     gtk_tree_model_get (model, &iter, COLUMN_DESCRIPTION, &description, -1);
     gtk_tooltip_set_text (tooltip, description);
     gtk_tree_view_set_tooltip_row (treeview, tooltip, path);
@@ -178,29 +193,47 @@ on_edited (GtkCellRendererText *cell,
 }
 
 static void
-toggle_colorbutton_sensitive (GtkToggleButton *togglebutton,
-                              GtkWidget       *colorbutton)
+toggle_colorbutton_sensitive (
+#if GTK_API_MAJOR >= 4
+    GtkCheckButton *button,
+#else
+    GtkToggleButton *button,
+#endif
+    GtkColorButton  *colorbutton)
 {
-    if (gtk_toggle_button_get_active (togglebutton))
-        gtk_widget_set_sensitive (colorbutton, TRUE);
-    else
-        gtk_widget_set_sensitive (colorbutton, FALSE);
+#if GTK_API_MAJOR >= 4
+    gtk_widget_set_sensitive (GTK_WIDGET (colorbutton),
+                              gtk_check_button_get_active (button));
+#else
+    gtk_widget_set_sensitive (GTK_WIDGET (colorbutton),
+                              gtk_toggle_button_get_active (button));
+#endif
 }
 
 static void
-on_foreground_toggled (GtkToggleButton *togglebutton,
-                       gpointer         user_data)
+on_foreground_toggled (
+#if GTK_API_MAJOR >= 4
+    GtkCheckButton *button,
+#else
+    GtkToggleButton *button,
+#endif
+    gpointer         user_data)
 {
     SetupDialog *dialog = user_data;
-    toggle_colorbutton_sensitive (togglebutton, dialog->colorbutton_foreground);
+    toggle_colorbutton_sensitive (button, dialog->colorbutton_foreground);
 }
 
 static void
-on_background_toggled (GtkToggleButton *togglebutton,
-                       gpointer         user_data)
+on_background_toggled (
+#if GTK_API_MAJOR >= 4
+    GtkCheckButton *button,
+#else
+    GtkToggleButton *button,
+#endif
+    gpointer         user_data)
 {
     SetupDialog *dialog = user_data;
-    toggle_colorbutton_sensitive (togglebutton, dialog->colorbutton_background);
+    toggle_colorbutton_sensitive (button, dialog->colorbutton_background);
 }
 
 static gint
@@ -294,7 +327,7 @@ set_color_string (GtkColorButton *colorbutton, const gchar *color)
 {
     GdkColor cvalue;
     gdk_color_parse (color, &cvalue);
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (colorbutton), &cvalue);
+    gtk_color_button_set_color (colorbutton, &cvalue);
 }
 
 static void
@@ -302,7 +335,7 @@ set_color_uint (GtkColorButton *colorbutton, guint color)
 {
     GdkColor cvalue;
     _gdk_color_from_uint (&cvalue, color);
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (colorbutton), &cvalue);
+    gtk_color_button_set_color (colorbutton, &cvalue);
 }
 
 static gchar *
@@ -316,7 +349,11 @@ get_color_string (GtkColorButton *colorbutton)
 
 static void
 load_color (GSettings       *gsettings,
-            GtkToggleButton *togglebutton,
+#if GTK_API_MAJOR >= 4
+            GtkCheckButton *button,
+#else
+            GtkToggleButton *button,
+#endif
             GtkColorButton  *colorbutton,
             const gchar     *key,
             guint            defcol)
@@ -337,11 +374,36 @@ load_color (GSettings       *gsettings,
     if (!bvalue) {
         set_color_uint (colorbutton, defcol);
     }
-
-    gtk_toggle_button_set_active (togglebutton, bvalue);
+#if GTK_API_MAJOR >= 4
+    gtk_check_button_set_active (button, bvalue);
+#else
+    gtk_toggle_button_set_active (button, bvalue);
+#endif
     gtk_widget_set_sensitive (GTK_WIDGET (colorbutton), bvalue);
 }
 
+#if GTK_API_MAJOR >= 4
+static void
+load_choice (GSettings   *gsettings,
+             GtkDropDown *dropdown,
+             const gchar *key,
+             gint         defval)
+{
+    GVariant *value;
+    gint ivalue;
+
+    ivalue = defval;
+    value = g_settings_get_value (gsettings, key);
+    if (value != NULL) {
+        ivalue = g_variant_get_int32 (value);
+        g_variant_unref (value);
+    }
+    /* enum values map directly to GtkStringList order */
+    gtk_drop_down_set_selected (dropdown, ivalue);
+}
+#endif
+
+#if GTK_API_MAJOR < 4
 static void
 load_choice (GSettings   *gsettings,
              GtkComboBox *combo,
@@ -363,14 +425,19 @@ load_choice (GSettings   *gsettings,
         ivalue = g_variant_get_int32 (value);
         g_variant_unref (value);
     }
-    
+
     index = get_combo_box_index_by_value (GTK_COMBO_BOX (combo), ivalue);
     gtk_combo_box_set_active (GTK_COMBO_BOX (combo), index);
 }
+#endif
 
 static void
 load_toggle (GSettings       *gsettings,
-             GtkToggleButton *togglebutton,
+#if GTK_API_MAJOR >= 4
+             GtkCheckButton *button,
+#else
+             GtkToggleButton *button,
+#endif
              const gchar     *key,
              gboolean         defval)
 {
@@ -383,8 +450,11 @@ load_toggle (GSettings       *gsettings,
         bvalue = g_variant_get_boolean (value);
         g_variant_unref (value);
     }
-
-    gtk_toggle_button_set_active (togglebutton, bvalue);
+#if GTK_API_MAJOR >= 4
+    gtk_check_button_set_active(button, bvalue);
+#else
+    gtk_toggle_button_set_active (button, bvalue);
+#endif
 }
 
 static void
@@ -395,8 +465,8 @@ setup_dialog_load_config (SetupDialog *dialog)
     /* General -> Pre-edit Appearance */
     /* foreground color of pre-edit buffer */
     load_color (dialog->gsettings,
-                GTK_TOGGLE_BUTTON (dialog->checkbutton_foreground),
-                GTK_COLOR_BUTTON (dialog->colorbutton_foreground),
+                dialog->checkbutton_foreground,
+                dialog->colorbutton_foreground,
                 "preedit-foreground",
                 PREEDIT_FOREGROUND);
     g_signal_connect (dialog->checkbutton_foreground, "toggled",
@@ -404,8 +474,8 @@ setup_dialog_load_config (SetupDialog *dialog)
 
     /* background color of pre-edit buffer */
     load_color (dialog->gsettings,
-                GTK_TOGGLE_BUTTON (dialog->checkbutton_background),
-                GTK_COLOR_BUTTON (dialog->colorbutton_background),
+                dialog->checkbutton_background,
+                dialog->colorbutton_background,
                 "preedit-background",
                 PREEDIT_BACKGROUND);
     g_signal_connect (dialog->checkbutton_background, "toggled",
@@ -413,20 +483,20 @@ setup_dialog_load_config (SetupDialog *dialog)
 
     /* underline of pre-edit buffer */
     load_choice (dialog->gsettings,
-                 GTK_COMBO_BOX (dialog->combobox_underline),
+                 dialog->combobox_underline,
                  "preedit-underline",
                  IBUS_ATTR_UNDERLINE_NONE);
 
     /* General -> Other */
     /* lookup table orientation */
     load_choice (dialog->gsettings,
-                 GTK_COMBO_BOX (dialog->combobox_orientation),
+                 dialog->combobox_orientation,
                  "lookup-table-orientation",
                  IBUS_ORIENTATION_SYSTEM);
 
     /* Use US keyboard layout */
     load_toggle (dialog->gsettings,
-                 GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
+                 dialog->checkbutton_use_us_layout,
                  "use-us-layout",
                  FALSE);
 
@@ -437,19 +507,19 @@ setup_dialog_load_config (SetupDialog *dialog)
                                         G_TYPE_STRING);
     insert_m17n_items (dialog->store, dialog->lang, dialog->name);
 
-    gtk_tree_view_set_model (GTK_TREE_VIEW (dialog->treeview),
+    gtk_tree_view_set_model (dialog->treeview,
                              GTK_TREE_MODEL (dialog->store));
 
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes
-        (GTK_TREE_VIEW (dialog->treeview), -1,
+        (dialog->treeview, -1,
          "Key",
          renderer,
          "text", COLUMN_KEY,
          NULL);
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes
-        (GTK_TREE_VIEW (dialog->treeview), -1,
+        (dialog->treeview, -1,
          "Value",
          renderer,
          "text", COLUMN_VALUE,
@@ -463,13 +533,23 @@ setup_dialog_load_config (SetupDialog *dialog)
 
 static void
 save_color (SetupDialog     *dialog,
-            GtkToggleButton *togglebutton,
+#if GTK_API_MAJOR >= 4
+            GtkCheckButton *button,
+#else
+            GtkToggleButton *button,
+#endif
             GtkColorButton  *colorbutton,
             const gchar     *key)
 {
     GVariant *value;
+    gboolean is_active;
 
-    if (gtk_toggle_button_get_active (togglebutton)) {
+#if GTK_API_MAJOR >= 4
+    is_active = gtk_check_button_get_active (button);
+#else
+    is_active = gtk_toggle_button_get_active (button);
+#endif
+    if (is_active) {
         gchar *color = get_color_string (colorbutton);
         value = g_variant_new_string (color);
         g_free (color);
@@ -479,6 +559,23 @@ save_color (SetupDialog     *dialog,
     g_settings_set_value (dialog->gsettings, key, value);
 }
 
+#if GTK_API_MAJOR >= 4
+static void
+save_choice (SetupDialog *dialog,
+             GtkDropDown *dropdown,
+             const gchar *key)
+{
+    guint index;
+    GVariant *value;
+
+    index = gtk_drop_down_get_selected (dropdown);
+
+    value = g_variant_new_int32 ((gint) index);
+    g_settings_set_value (dialog->gsettings, key, value);
+}
+#endif
+
+#if GTK_API_MAJOR < 4
 static void
 save_choice (SetupDialog *dialog,
              GtkComboBox *combo,
@@ -496,15 +593,23 @@ save_choice (SetupDialog *dialog,
     value = g_variant_new_int32 (active);
     g_settings_set_value (dialog->gsettings, key, value);
 }
+#endif
 
 static void
 save_toggle (SetupDialog     *dialog,
-             GtkToggleButton *togglebutton,
+#if GTK_API_MAJOR >= 4
+             GtkCheckButton *button,
+#else
+             GtkToggleButton *button,
+#endif
              const gchar     *key)
 {
     GVariant *value;
-
-    value = g_variant_new_boolean (gtk_toggle_button_get_active (togglebutton));
+#if GTK_API_MAJOR >= 4
+    value = g_variant_new_boolean (gtk_check_button_get_active (button));
+#else
+    value = g_variant_new_boolean (gtk_toggle_button_get_active (button));
+#endif
     g_settings_set_value (dialog->gsettings, key, value);
 }
 
@@ -576,25 +681,50 @@ static void
 setup_dialog_save_config (SetupDialog *dialog)
 {
     save_color (dialog,
-                GTK_TOGGLE_BUTTON (dialog->checkbutton_foreground),
-                GTK_COLOR_BUTTON (dialog->colorbutton_foreground),
+                dialog->checkbutton_foreground,
+                dialog->colorbutton_foreground,
                 "preedit-foreground");
     save_color (dialog,
-                GTK_TOGGLE_BUTTON (dialog->checkbutton_background),
-                GTK_COLOR_BUTTON (dialog->colorbutton_background),
+                dialog->checkbutton_background,
+                dialog->colorbutton_background,
                 "preedit-background");
     save_choice (dialog,
-                 GTK_COMBO_BOX (dialog->combobox_underline),
+                 dialog->combobox_underline,
                  "preedit-underline");
     save_choice (dialog,
-                 GTK_COMBO_BOX (dialog->combobox_orientation),
+                 dialog->combobox_orientation,
                  "lookup-table-orientation");
     save_toggle (dialog,
-                 GTK_TOGGLE_BUTTON (dialog->checkbutton_use_us_layout),
+                 dialog->checkbutton_use_us_layout,
                  "use-us-layout");
     save_m17n_options (dialog);
     g_settings_sync();
 }
+
+#if GTK_API_MAJOR >= 4
+#define UI_FILE "ibus-m17n-preferences-gtk4.ui"
+#else
+#define UI_FILE "ibus-m17n-preferences-gtk3.ui"
+#endif
+
+#if GTK_API_MAJOR >= 4
+static void
+on_close_button_clicked (GtkButton *button, gpointer user_data)
+{
+    SetupDialog *dialog = user_data;
+    gtk_window_close (dialog->dialog);
+}
+
+static gboolean
+on_window_close_request (GtkWindow *window, gpointer user_data)
+{
+    GMainLoop *loop = user_data;
+
+    g_assert (loop != NULL);
+    g_main_loop_quit (loop);
+    return FALSE;  /* allow GTK to close/hide the window */
+}
+#endif
 
 static SetupDialog *
 setup_dialog_new (MSymbol     lang,
@@ -618,33 +748,54 @@ setup_dialog_new (MSymbol     lang,
     gtk_builder_set_translation_domain (builder, "ibus-m17n");
 
     error = NULL;
-    if (gtk_builder_add_from_file (builder,
-                                   PKGDATADIR "/setup/ibus-m17n-preferences.ui",
-                                   &error) == 0) {
-        g_warning ("can't read ibus-m17n-preferences.ui: %s",
+    if (!gtk_builder_add_from_file (builder,
+                                   PKGDATADIR "/setup/" UI_FILE,
+                                   &error)) {
+        g_warning ("can't read %s: %s",
+                   PKGDATADIR "/setup/" UI_FILE,
                    error->message);
         g_error_free (error);
-        g_return_val_if_reached (NULL);
+        return NULL;
     }
 
     object = gtk_builder_get_object (builder, "dialog");
-    dialog->dialog = GTK_WIDGET (object);
+    dialog->dialog = GTK_WINDOW (object);
+#if GTK_API_MAJOR >= 4
+    object = gtk_builder_get_object (builder, "buttonClose");
+    dialog->button_close = GTK_BUTTON(object);
+    g_signal_connect (dialog->button_close,
+                      "clicked",
+                      G_CALLBACK (on_close_button_clicked),
+                      dialog);
     object = gtk_builder_get_object (builder, "checkbutton_foreground");
-    dialog->checkbutton_foreground = GTK_WIDGET (object);
-    object = gtk_builder_get_object (builder, "colorbutton_foreground");
-    dialog->colorbutton_foreground = GTK_WIDGET (object);
+    dialog->checkbutton_foreground = GTK_CHECK_BUTTON (object);
     object = gtk_builder_get_object (builder, "checkbutton_background");
-    dialog->checkbutton_background = GTK_WIDGET (object);
-    object = gtk_builder_get_object (builder, "colorbutton_background");
-    dialog->colorbutton_background = GTK_WIDGET (object);
+    dialog->checkbutton_background = GTK_CHECK_BUTTON (object);
     object = gtk_builder_get_object (builder, "combobox_underline");
-    dialog->combobox_underline = GTK_WIDGET (object);
+    dialog->combobox_underline = GTK_DROP_DOWN (object);
     object = gtk_builder_get_object (builder, "combobox_orientation");
-    dialog->combobox_orientation = GTK_WIDGET (object);
+    dialog->combobox_orientation = GTK_DROP_DOWN (object);
     object = gtk_builder_get_object (builder, "checkbutton_use_us_layout");
-    dialog->checkbutton_use_us_layout = GTK_WIDGET (object);
+    dialog->checkbutton_use_us_layout = GTK_CHECK_BUTTON (object);
+#else
+    object = gtk_builder_get_object (builder, "checkbutton_foreground");
+    dialog->checkbutton_foreground = GTK_TOGGLE_BUTTON (object);
+    object = gtk_builder_get_object (builder, "checkbutton_background");
+    dialog->checkbutton_background = GTK_TOGGLE_BUTTON (object);
+    object = gtk_builder_get_object (builder, "combobox_underline");
+    dialog->combobox_underline = GTK_COMBO_BOX (object);
+    object = gtk_builder_get_object (builder, "combobox_orientation");
+    dialog->combobox_orientation = GTK_COMBO_BOX (object);
+    object = gtk_builder_get_object (builder, "checkbutton_use_us_layout");
+    dialog->checkbutton_use_us_layout = GTK_TOGGLE_BUTTON (object);
+#endif
+    object = gtk_builder_get_object (builder, "colorbutton_foreground");
+    dialog->colorbutton_foreground = GTK_COLOR_BUTTON (object);
+    object = gtk_builder_get_object (builder, "colorbutton_background");
+    dialog->colorbutton_background = GTK_COLOR_BUTTON (object);
+
     object = gtk_builder_get_object (builder, "treeview_mim_config");
-    dialog->treeview = GTK_WIDGET (object);
+    dialog->treeview = GTK_TREE_VIEW (object);
 
     return dialog;
 }
@@ -652,7 +803,11 @@ setup_dialog_new (MSymbol     lang,
 static void
 setup_dialog_free (SetupDialog *dialog)
 {
-    gtk_widget_destroy (dialog->dialog);
+#if GTK_API_MAJOR >= 4
+    g_clear_object (&dialog->dialog);
+#else
+    gtk_widget_destroy (GTK_WIDGET (dialog->dialog));
+#endif
     g_object_unref (dialog->gsettings);
     g_object_unref (dialog->store);
     g_slice_free (SetupDialog, dialog);
@@ -673,18 +828,34 @@ start (const gchar *engine_name)
 
     /* strv == {"m17n", lang, name, NULL} */
     dialog = setup_dialog_new (msymbol (strv[1]), msymbol (strv[2]));
+    if (dialog == NULL) {
+        fprintf (stderr, "setup_dialog_new failed.\n");
+        exit (1);
+    }
     g_strfreev (strv);
 
     setup_dialog_load_config (dialog);
 
     gtk_window_set_title(
-        GTK_WINDOW (dialog->dialog),
+        dialog->dialog,
         g_strdup_printf("%s %s",
-                        gtk_window_get_title(GTK_WINDOW (dialog->dialog)),
+                        gtk_window_get_title(dialog->dialog),
                         engine_name));
-    gtk_window_present (GTK_WINDOW (dialog->dialog));
-    gtk_dialog_run (GTK_DIALOG (dialog->dialog));
+    gtk_window_present (dialog->dialog);
+#if GTK_API_MAJOR >= 4
+{
+    GMainLoop *loop = g_main_loop_new (NULL, FALSE);
 
+    g_signal_connect (dialog->dialog,
+                      "close-request",
+                      G_CALLBACK (on_window_close_request),
+                      loop);
+    g_main_loop_run (loop);
+    g_main_loop_unref (loop);
+}
+#else
+    gtk_dialog_run (GTK_DIALOG (dialog->dialog));
+#endif
     setup_dialog_save_config (dialog);
     setup_dialog_free (dialog);
 
@@ -701,7 +872,11 @@ main (gint argc, gchar **argv)
     g_option_context_parse (context, &argc, &argv, NULL);
     g_option_context_free (context);
 
+#if GTK_API_MAJOR >= 4
+    gtk_init ();
+#else
     gtk_init (&argc, &argv);
+#endif
 
     if (!opt_name) {
         opt_name = (gchar *) g_getenv ("IBUS_ENGINE_NAME");

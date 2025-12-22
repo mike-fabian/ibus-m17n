@@ -93,7 +93,8 @@ ibus_setup_m17n_LDADD = \
 
 setupdir = $(pkgdatadir)/setup
 dist_setup_DATA = \
-	ibus-m17n-preferences.ui \
+	ibus-m17n-preferences-gtk3.ui \
+	ibus-m17n-preferences-gtk4.ui \
 	$(NULL)
 endif
 

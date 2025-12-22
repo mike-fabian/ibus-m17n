@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkStringList" id="list_orientation">
+    <items>
+        <item translatable="yes">Horizontal</item>
+        <item translatable="yes">Vertical</item>
+        <item translatable="yes">System</item>
+    </items>
+  </object>
+  <object class="GtkStringList" id="list_underline">
+    <items>
+      <item translatable="yes">None</item>
+      <item translatable="yes">Single</item>
+      <item translatable="yes">Double</item>
+      <item translatable="yes">Low</item>
+    </items>
+  </object>
+  <object class="GtkDialog" id="dialog">
+    <property name="default-width">400</property>
+    <property name="title" translatable="yes">Preferences</property>
+    <child>
+      <object class="GtkBox" id="dialog-content">
+        <property name="orientation">vertical</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <child>
+          <object class="GtkNotebook" id="pages">
+            <child>
+              <object class="GtkBox" id="pageGeneral">
+                <property name="orientation">vertical</property>
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="label-xalign">0</property>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">&lt;b&gt;Pre-edit Appearance&lt;/b&gt;</property>
+                        <property name="use-markup">true</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkCheckButton" id="checkbutton_foreground">
+                                <property name="label" translatable="yes">Foreground:</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="colorbutton_foreground"/>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkCheckButton" id="checkbutton_background">
+                                <property name="label" translatable="yes">Background:</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="colorbutton_background"/>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Underline:</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkDropDown" id="combobox_underline">
+                                <property name="model">list_underline</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                   <object class="GtkFrame">
+                     <property name="label-xalign">0</property>
+                     <child type="label">
+                       <object class="GtkLabel">
+                         <property name="label" translatable="yes">&lt;b&gt;Other&lt;/b&gt;</property>
+                         <property name="use-markup">true</property>
+                       </object>
+                     </child>
+                     <child>
+                       <object class="GtkBox">
+                         <property name="orientation">vertical</property>
+                         <property name="spacing">6</property>
+                         <child>
+                          <object class="GtkBox">
+                            <property name="orientation">horizontal</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Lookup Table Orientation:</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkDropDown" id="combobox_orientation">
+                                <property name="model">list_orientation</property>
+                              </object>
+                            </child>
+                          </object>
+                         </child>
+                         <child>
+                           <object class="GtkCheckButton" id="checkbutton_use_us_layout">
+                             <property name="label" translatable="yes">Use US keyboard layout</property>
+                           </object>
+                         </child>
+                       </object>
+                     </child>
+                   </object>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">General</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="pageAdvanced">
+                <property name="orientation">vertical</property>
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="label-xalign">0</property>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <child>
+                          <object class="GtkTreeView" id="treeview_mim_config">
+                            <property name="has-tooltip">true</property>
+                            <property name="enable-grid-lines">both</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">&lt;b&gt;m17n-lib Configuration&lt;/b&gt;</property>
+                        <property name="use-markup">true</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Advanced</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="halign">end</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkButton" id="buttonClose">
+                <property name="label" translatable="yes">Close</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">buttonClose</action-widget>
+    </action-widgets>
+  </object>
+</interface>
