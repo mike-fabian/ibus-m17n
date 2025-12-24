@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the ibus-m17n package.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2020, 2021.
 # Mike FABIAN <mfabian@redhat.com>, 2020.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2025-12-24 01:08+0100\n"
-"PO-Revision-Date: 2021-03-08 02:01+0000\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"PO-Revision-Date: 2025-12-24 00:34+0000\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
 "projects/ibus-m17n/app/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -97,7 +99,7 @@ msgstr "Avançado"
 
 #: src/ibus-m17n-preferences-gtk4.ui:188
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"

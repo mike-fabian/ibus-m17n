@@ -2,13 +2,15 @@
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
 # Emilio Herrera <ehespinosa57@gmail.com>, 2020.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2025-12-24 01:08+0100\n"
-"PO-Revision-Date: 2020-06-19 12:40+0000\n"
-"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
+"PO-Revision-Date: 2025-12-24 00:34+0000\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/ibus-"
 "m17n/app/es/>\n"
 "Language: es\n"
@@ -16,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0.4\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -96,7 +98,7 @@ msgstr "Avanzado"
 
 #: src/ibus-m17n-preferences-gtk4.ui:188
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"

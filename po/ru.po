@@ -2,13 +2,13 @@
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
 # Vadim tr <rth28291@tuta.io>, 2024.
-# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.24\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2025-12-24 01:08+0100\n"
-"PO-Revision-Date: 2024-02-15 13:32+0000\n"
+"PO-Revision-Date: 2025-12-24 00:34+0000\n"
 "Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
 "memory@weblate.org>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/ibus-"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3.1\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -99,7 +99,7 @@ msgstr "Дополнительно"
 
 #: src/ibus-m17n-preferences-gtk4.ui:188
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
