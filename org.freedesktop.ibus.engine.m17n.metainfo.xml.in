@@ -36,6 +36,26 @@
   <url type="translate">https://translate.fedoraproject.org/projects/ibus-m17n/</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.4.37" date="2025-12-24" urgency="medium">
+      <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.37</url>
+      <description>
+        <p>This new stable release includes these changes:</p>
+        <ul>
+          <li>
+            Port UI to GTK4 (Resolves: github-issue#99).
+            Configure option for Gtk4 added: “--with-gtk=2.0|3.0|4.0|no” (default: 4.0)
+          </li>
+          <li>
+            Translation update from Weblate (cs 100%, de 100%, el 100%, es 100%, new: fi 100%, fr 100%, ja 100%, ka 100%, kab 100%, lt 100%, pt_BR 100%, ro 96%, ru 100%, sv 100%, tr 100%, uk 100%, zh_CN 100%, zh_TW 28%)
+          </li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/ibus/ibus-m17n/issues/99">
+          github-issue#99
+        </issue>
+      </issues>
+    </release>
     <release version="1.4.36" date="2025-04-07" urgency="medium">
       <url>https://github.com/ibus/ibus-m17n/releases/tag/1.4.36</url>
       <description>
