@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.28\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2025-04-07 11:01+0200\n"
+"POT-Creation-Date: 2025-12-24 01:08+0100\n"
 "PO-Revision-Date: 2024-04-10 13:26+0000\n"
 "Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
 "memory@weblate.org>\n"
@@ -24,83 +24,87 @@ msgstr ""
 msgid "M17N"
 msgstr "എം17എന്‍"
 
-#: src/ibus-m17n-preferences.ui:14
+#: src/ibus-m17n-preferences-gtk3.ui:14 src/ibus-m17n-preferences-gtk4.ui:8
 msgid "System"
 msgstr "സിസ്റ്റം"
 
-#: src/ibus-m17n-preferences.ui:18
+#: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
 msgid "Vertical"
 msgstr "ലംബം"
 
-#: src/ibus-m17n-preferences.ui:22
+#: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
 msgid "Horizontal"
 msgstr "തിരശ്ചീനം"
 
-#: src/ibus-m17n-preferences.ui:36
+#: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
 msgid "Single"
 msgstr "ഒറ്റ"
 
-#: src/ibus-m17n-preferences.ui:40
+#: src/ibus-m17n-preferences-gtk3.ui:40 src/ibus-m17n-preferences-gtk4.ui:15
 msgid "Double"
 msgstr "ഇരട്ട"
 
-#: src/ibus-m17n-preferences.ui:44
+#: src/ibus-m17n-preferences-gtk3.ui:44 src/ibus-m17n-preferences-gtk4.ui:16
 msgid "Low"
 msgstr "താഴ്‌ന്ന"
 
-#: src/ibus-m17n-preferences.ui:48
+#: src/ibus-m17n-preferences-gtk3.ui:48 src/ibus-m17n-preferences-gtk4.ui:13
 msgid "None"
 msgstr "വേണ്ട"
 
-#: src/ibus-m17n-preferences.ui:57
+#: src/ibus-m17n-preferences-gtk3.ui:57 src/ibus-m17n-preferences-gtk4.ui:21
 msgid "Preferences"
 msgstr "ഇഷ്ടാനിഷ്ടങ്ങള്‍"
 
-#: src/ibus-m17n-preferences.ui:172
+#: src/ibus-m17n-preferences-gtk3.ui:172 src/ibus-m17n-preferences-gtk4.ui:57
 msgid "Foreground:"
 msgstr "മുന്‍വശം:"
 
-#: src/ibus-m17n-preferences.ui:181
+#: src/ibus-m17n-preferences-gtk3.ui:181 src/ibus-m17n-preferences-gtk4.ui:71
 msgid "Background:"
 msgstr "പശ്ചാത്തലം:"
 
-#: src/ibus-m17n-preferences.ui:196
+#: src/ibus-m17n-preferences-gtk3.ui:196 src/ibus-m17n-preferences-gtk4.ui:85
 msgid "Underline:"
 msgstr "അടിവര:"
 
-#: src/ibus-m17n-preferences.ui:211
+#: src/ibus-m17n-preferences-gtk3.ui:211 src/ibus-m17n-preferences-gtk4.ui:43
 msgid "<b>Pre-edit Appearance</b>"
 msgstr "<b>പ്രി-എഡിറ്റിന്റെ രൂപം</b>"
 
-#: src/ibus-m17n-preferences.ui:244
+#: src/ibus-m17n-preferences-gtk3.ui:244 src/ibus-m17n-preferences-gtk4.ui:118
 msgid "Lookup Table Orientation:"
 msgstr "പട്ടിക തിരയേണ്ട രീതി:"
 
-#: src/ibus-m17n-preferences.ui:260
+#: src/ibus-m17n-preferences-gtk3.ui:260 src/ibus-m17n-preferences-gtk4.ui:130
 msgid "Use US keyboard layout"
 msgstr "യു എസ് കീബോൎഡ് ഉപയോഗിക്കുക"
 
-#: src/ibus-m17n-preferences.ui:280
+#: src/ibus-m17n-preferences-gtk3.ui:280 src/ibus-m17n-preferences-gtk4.ui:104
 msgid "<b>Other</b>"
 msgstr "<b>മിച്ചം</b>"
 
-#: src/ibus-m17n-preferences.ui:299
+#: src/ibus-m17n-preferences-gtk3.ui:299 src/ibus-m17n-preferences-gtk4.ui:141
 msgid "General"
 msgstr "പൊതുവായ"
 
-#: src/ibus-m17n-preferences.ui:347
+#: src/ibus-m17n-preferences-gtk3.ui:347 src/ibus-m17n-preferences-gtk4.ui:166
 msgid "<b>m17n-lib Configuration</b>"
 msgstr "<b>എം17എന്‍-ലൈബ് ക്രമീകരണങ്ങള്‍</b>"
 
-#: src/ibus-m17n-preferences.ui:362
+#: src/ibus-m17n-preferences-gtk3.ui:362 src/ibus-m17n-preferences-gtk4.ui:176
 msgid "Advanced"
 msgstr "വിശദമായ"
 
-#: src/ibus-setup-m17n.desktop.in.in:3
+#: src/ibus-m17n-preferences-gtk4.ui:188
+msgid "Close"
+msgstr ""
+
+#: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
 msgstr "ഐബസ് എം17എന്‍ സജ്ജീകരണങ്ങള്‍"
 
-#: src/ibus-setup-m17n.desktop.in.in:4
+#: src/ibus-setup-m17n.desktop.in.in:3
 msgid "Set up IBus M17N engine"
 msgstr "ഐബസ് എം17എന്‍ സജ്ജീകരിക്കുക"
 

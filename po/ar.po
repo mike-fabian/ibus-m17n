@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.9\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2025-04-07 11:01+0200\n"
+"POT-Creation-Date: 2025-12-24 01:08+0100\n"
 "PO-Revision-Date: 2022-09-04 07:05+0000\n"
 "Last-Translator: Avid Seeker <avidseeker7@protonmail.com>\n"
 "Language-Team: Arabic <https://translate.fedoraproject.org/projects/ibus-"
@@ -23,83 +23,87 @@ msgstr ""
 msgid "M17N"
 msgstr "تعددية اللغات (M17N)"
 
-#: src/ibus-m17n-preferences.ui:14
+#: src/ibus-m17n-preferences-gtk3.ui:14 src/ibus-m17n-preferences-gtk4.ui:8
 msgid "System"
 msgstr "نظام"
 
-#: src/ibus-m17n-preferences.ui:18
+#: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
 msgid "Vertical"
 msgstr "رأسي"
 
-#: src/ibus-m17n-preferences.ui:22
+#: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
 msgid "Horizontal"
 msgstr "أفقي"
 
-#: src/ibus-m17n-preferences.ui:36
+#: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
 msgid "Single"
 msgstr "وحيد"
 
-#: src/ibus-m17n-preferences.ui:40
+#: src/ibus-m17n-preferences-gtk3.ui:40 src/ibus-m17n-preferences-gtk4.ui:15
 msgid "Double"
 msgstr "مزدوج"
 
-#: src/ibus-m17n-preferences.ui:44
+#: src/ibus-m17n-preferences-gtk3.ui:44 src/ibus-m17n-preferences-gtk4.ui:16
 msgid "Low"
 msgstr "منخفض"
 
-#: src/ibus-m17n-preferences.ui:48
+#: src/ibus-m17n-preferences-gtk3.ui:48 src/ibus-m17n-preferences-gtk4.ui:13
 msgid "None"
 msgstr "بدون"
 
-#: src/ibus-m17n-preferences.ui:57
+#: src/ibus-m17n-preferences-gtk3.ui:57 src/ibus-m17n-preferences-gtk4.ui:21
 msgid "Preferences"
 msgstr "خيارات"
 
-#: src/ibus-m17n-preferences.ui:172
+#: src/ibus-m17n-preferences-gtk3.ui:172 src/ibus-m17n-preferences-gtk4.ui:57
 msgid "Foreground:"
 msgstr "الواجهة:"
 
-#: src/ibus-m17n-preferences.ui:181
+#: src/ibus-m17n-preferences-gtk3.ui:181 src/ibus-m17n-preferences-gtk4.ui:71
 msgid "Background:"
 msgstr "الخلفية:"
 
-#: src/ibus-m17n-preferences.ui:196
+#: src/ibus-m17n-preferences-gtk3.ui:196 src/ibus-m17n-preferences-gtk4.ui:85
 msgid "Underline:"
 msgstr "خط تحتي:"
 
-#: src/ibus-m17n-preferences.ui:211
+#: src/ibus-m17n-preferences-gtk3.ui:211 src/ibus-m17n-preferences-gtk4.ui:43
 msgid "<b>Pre-edit Appearance</b>"
 msgstr "<b>مظهر ما قبل التعديل</b>"
 
-#: src/ibus-m17n-preferences.ui:244
+#: src/ibus-m17n-preferences-gtk3.ui:244 src/ibus-m17n-preferences-gtk4.ui:118
 msgid "Lookup Table Orientation:"
 msgstr "اتجاه واجهة البحث:"
 
-#: src/ibus-m17n-preferences.ui:260
+#: src/ibus-m17n-preferences-gtk3.ui:260 src/ibus-m17n-preferences-gtk4.ui:130
 msgid "Use US keyboard layout"
 msgstr "استخدم مخطط لوحة المفاتيح الأمريكي"
 
-#: src/ibus-m17n-preferences.ui:280
+#: src/ibus-m17n-preferences-gtk3.ui:280 src/ibus-m17n-preferences-gtk4.ui:104
 msgid "<b>Other</b>"
 msgstr "<b>أخرى</b>"
 
-#: src/ibus-m17n-preferences.ui:299
+#: src/ibus-m17n-preferences-gtk3.ui:299 src/ibus-m17n-preferences-gtk4.ui:141
 msgid "General"
 msgstr "عام"
 
-#: src/ibus-m17n-preferences.ui:347
+#: src/ibus-m17n-preferences-gtk3.ui:347 src/ibus-m17n-preferences-gtk4.ui:166
 msgid "<b>m17n-lib Configuration</b>"
 msgstr "<b>إعدادات m17n-lib</b>"
 
-#: src/ibus-m17n-preferences.ui:362
+#: src/ibus-m17n-preferences-gtk3.ui:362 src/ibus-m17n-preferences-gtk4.ui:176
 msgid "Advanced"
 msgstr "متقدم"
 
-#: src/ibus-setup-m17n.desktop.in.in:3
+#: src/ibus-m17n-preferences-gtk4.ui:188
+msgid "Close"
+msgstr ""
+
+#: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
 msgstr "إعداد IBus M17N"
 
-#: src/ibus-setup-m17n.desktop.in.in:4
+#: src/ibus-setup-m17n.desktop.in.in:3
 msgid "Set up IBus M17N engine"
 msgstr "إعداد محرك IBus M17N"
 

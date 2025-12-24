@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
-"POT-Creation-Date: 2025-04-07 11:01+0200\n"
+"POT-Creation-Date: 2025-12-24 01:08+0100\n"
 "PO-Revision-Date: 2020-01-17 17:15+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.stg.fedoraproject.org/projects/"
@@ -25,83 +25,87 @@ msgstr ""
 msgid "M17N"
 msgstr "M17N"
 
-#: src/ibus-m17n-preferences.ui:14
+#: src/ibus-m17n-preferences-gtk3.ui:14 src/ibus-m17n-preferences-gtk4.ui:8
 msgid "System"
 msgstr "Система"
 
-#: src/ibus-m17n-preferences.ui:18
+#: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
 msgid "Vertical"
 msgstr "Вертикальна"
 
-#: src/ibus-m17n-preferences.ui:22
+#: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
 msgid "Horizontal"
 msgstr "Горизонтальна"
 
-#: src/ibus-m17n-preferences.ui:36
+#: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
 msgid "Single"
 msgstr "Одинарні"
 
-#: src/ibus-m17n-preferences.ui:40
+#: src/ibus-m17n-preferences-gtk3.ui:40 src/ibus-m17n-preferences-gtk4.ui:15
 msgid "Double"
 msgstr "Подвійні"
 
-#: src/ibus-m17n-preferences.ui:44
+#: src/ibus-m17n-preferences-gtk3.ui:44 src/ibus-m17n-preferences-gtk4.ui:16
 msgid "Low"
 msgstr "Низькі"
 
-#: src/ibus-m17n-preferences.ui:48
+#: src/ibus-m17n-preferences-gtk3.ui:48 src/ibus-m17n-preferences-gtk4.ui:13
 msgid "None"
 msgstr "Немає"
 
-#: src/ibus-m17n-preferences.ui:57
+#: src/ibus-m17n-preferences-gtk3.ui:57 src/ibus-m17n-preferences-gtk4.ui:21
 msgid "Preferences"
 msgstr "Налаштування"
 
-#: src/ibus-m17n-preferences.ui:172
+#: src/ibus-m17n-preferences-gtk3.ui:172 src/ibus-m17n-preferences-gtk4.ui:57
 msgid "Foreground:"
 msgstr "Передній план:"
 
-#: src/ibus-m17n-preferences.ui:181
+#: src/ibus-m17n-preferences-gtk3.ui:181 src/ibus-m17n-preferences-gtk4.ui:71
 msgid "Background:"
 msgstr "Тло:"
 
-#: src/ibus-m17n-preferences.ui:196
+#: src/ibus-m17n-preferences-gtk3.ui:196 src/ibus-m17n-preferences-gtk4.ui:85
 msgid "Underline:"
 msgstr "Підкреслювання:"
 
-#: src/ibus-m17n-preferences.ui:211
+#: src/ibus-m17n-preferences-gtk3.ui:211 src/ibus-m17n-preferences-gtk4.ui:43
 msgid "<b>Pre-edit Appearance</b>"
 msgstr "<b>Вигляд до редагування</b>"
 
-#: src/ibus-m17n-preferences.ui:244
+#: src/ibus-m17n-preferences-gtk3.ui:244 src/ibus-m17n-preferences-gtk4.ui:118
 msgid "Lookup Table Orientation:"
 msgstr "Орієнтація таблиці пошуку:"
 
-#: src/ibus-m17n-preferences.ui:260
+#: src/ibus-m17n-preferences-gtk3.ui:260 src/ibus-m17n-preferences-gtk4.ui:130
 msgid "Use US keyboard layout"
 msgstr "Американська розкладка"
 
-#: src/ibus-m17n-preferences.ui:280
+#: src/ibus-m17n-preferences-gtk3.ui:280 src/ibus-m17n-preferences-gtk4.ui:104
 msgid "<b>Other</b>"
 msgstr "<b>Інше</b>"
 
-#: src/ibus-m17n-preferences.ui:299
+#: src/ibus-m17n-preferences-gtk3.ui:299 src/ibus-m17n-preferences-gtk4.ui:141
 msgid "General"
 msgstr "Загальне"
 
-#: src/ibus-m17n-preferences.ui:347
+#: src/ibus-m17n-preferences-gtk3.ui:347 src/ibus-m17n-preferences-gtk4.ui:166
 msgid "<b>m17n-lib Configuration</b>"
 msgstr "<b>Налаштування m17n-lib</b>"
 
-#: src/ibus-m17n-preferences.ui:362
+#: src/ibus-m17n-preferences-gtk3.ui:362 src/ibus-m17n-preferences-gtk4.ui:176
 msgid "Advanced"
 msgstr "Додатково"
 
-#: src/ibus-setup-m17n.desktop.in.in:3
+#: src/ibus-m17n-preferences-gtk4.ui:188
+msgid "Close"
+msgstr ""
+
+#: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
 msgstr "Налаштування M17N IBus"
 
-#: src/ibus-setup-m17n.desktop.in.in:4
+#: src/ibus-setup-m17n.desktop.in.in:3
 msgid "Set up IBus M17N engine"
 msgstr "Налаштувати рушій M17N IBus"
 
