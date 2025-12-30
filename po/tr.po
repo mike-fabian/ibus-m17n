@@ -4,14 +4,14 @@
 # Oğuz Ersen <oguzersen@protonmail.com>, 2019.
 # Mike FABIAN <mfabian@redhat.com>, 2019.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# Oğuz Ersen <oguz@ersen.moe>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.0\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2025-12-24 01:08+0100\n"
-"PO-Revision-Date: 2025-12-24 00:34+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"PO-Revision-Date: 2025-12-30 16:46+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/ibus-"
 "m17n/app/tr/>\n"
 "Language: tr\n"
