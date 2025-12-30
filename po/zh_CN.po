@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the PACKAGE package.
-# Mike FABIAN <mfabian@redhat.com>, 2019, 2020.
+# Mike FABIAN <mfabian@redhat.com>, 2019, 2020, 2025.
 # chiachen <luojiazhen@gmail.com>, 2020.
 # Dingzhong Chen <wsxy162@gmail.com>, 2021, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
@@ -11,8 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2025-12-24 01:08+0100\n"
 "PO-Revision-Date: 2025-12-30 16:45+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/ibus-m17n/app/zh_CN/>\n"
 "Language: zh_CN\n"
