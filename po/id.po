@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the ibus-m17n package.
 # Mike FABIAN <mfabian@redhat.com>, 2019, 2025.
 # Rahman Yusri Aftian <aftian9603@gmail.com>, 2019, 2025.
+# Arif Budiman <arifpedia@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.1\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2026-02-16 10:36+0100\n"
-"PO-Revision-Date: 2025-12-30 16:46+0000\n"
-"Last-Translator: Mike FABIAN <mfabian@redhat.com>\n"
+"PO-Revision-Date: 2026-03-23 06:58+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/ibus-"
 "m17n/app/id/>\n"
 "Language: id\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16.2\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -97,7 +98,7 @@ msgstr "lanjutan"
 
 #: src/ibus-m17n-preferences-gtk4.ui:188
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 #: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
