@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
+# This file is distributed under the same license as the ibus-m17n package.
+# Bone NI <bounkirdni@gmail.com>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: ibus-m17n 1.4.38\n"
+"Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
+"POT-Creation-Date: 2026-02-16 10:36+0100\n"
+"PO-Revision-Date: 2026-05-11 14:55+0000\n"
+"Last-Translator: Bone NI <bounkirdni@gmail.com>\n"
+"Language-Team: Lao <https://translate.fedoraproject.org/projects/ibus-m17n/"
+"app/lo/>\n"
+"Language: lo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17.1\n"
+
+#: src/m17nutil.c:351
+msgid "M17N"
+msgstr "M17N"
+
+#: src/ibus-m17n-preferences-gtk3.ui:14 src/ibus-m17n-preferences-gtk4.ui:8
+msgid "System"
+msgstr "ລະບົບ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
+msgid "Vertical"
+msgstr "ແນວຕັ້ງ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
+msgid "Horizontal"
+msgstr "ແນວນອນ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
+msgid "Single"
+msgstr "ດ່ຽວ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:40 src/ibus-m17n-preferences-gtk4.ui:15
+msgid "Double"
+msgstr "ຄູ່"
+
+#: src/ibus-m17n-preferences-gtk3.ui:44 src/ibus-m17n-preferences-gtk4.ui:16
+msgid "Low"
+msgstr "ຕ່ຳ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:48 src/ibus-m17n-preferences-gtk4.ui:13
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:57 src/ibus-m17n-preferences-gtk4.ui:21
+msgid "Preferences"
+msgstr "ການຕັ້ງຄ່າ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:172 src/ibus-m17n-preferences-gtk4.ui:57
+msgid "Foreground:"
+msgstr "ສີພື້ນໜ້າ:"
+
+#: src/ibus-m17n-preferences-gtk3.ui:181 src/ibus-m17n-preferences-gtk4.ui:71
+msgid "Background:"
+msgstr "ສີພື້ນຫຼັງ:"
+
+#: src/ibus-m17n-preferences-gtk3.ui:196 src/ibus-m17n-preferences-gtk4.ui:85
+msgid "Underline:"
+msgstr "ຂີດກ້ອງ:"
+
+#: src/ibus-m17n-preferences-gtk3.ui:211 src/ibus-m17n-preferences-gtk4.ui:43
+msgid "<b>Pre-edit Appearance</b>"
+msgstr "<b>ຮູບລັກສະນະການແກ້ໄຂເບື້ອງຕົ້ນ</b>"
+
+#: src/ibus-m17n-preferences-gtk3.ui:244 src/ibus-m17n-preferences-gtk4.ui:118
+msgid "Lookup Table Orientation:"
+msgstr "ການວາງແນວຕາຕະລາງຄົ້ນຫາ:"
+
+#: src/ibus-m17n-preferences-gtk3.ui:260 src/ibus-m17n-preferences-gtk4.ui:130
+msgid "Use US keyboard layout"
+msgstr "ໃຊ້ຜັງແປ້ນພິມ US"
+
+#: src/ibus-m17n-preferences-gtk3.ui:280 src/ibus-m17n-preferences-gtk4.ui:104
+msgid "<b>Other</b>"
+msgstr "<b>ອື່ນໆ</b>"
+
+#: src/ibus-m17n-preferences-gtk3.ui:299 src/ibus-m17n-preferences-gtk4.ui:141
+msgid "General"
+msgstr "ທົ່ວໄປ"
+
+#: src/ibus-m17n-preferences-gtk3.ui:347 src/ibus-m17n-preferences-gtk4.ui:166
+msgid "<b>m17n-lib Configuration</b>"
+msgstr "<b>ການກຳນົດຄ່າ m17n-lib</b>"
+
+#: src/ibus-m17n-preferences-gtk3.ui:362 src/ibus-m17n-preferences-gtk4.ui:176
+msgid "Advanced"
+msgstr "ຂັ້ນສູງ"
+
+#: src/ibus-m17n-preferences-gtk4.ui:188
+msgid "Close"
+msgstr "ປິດ"
+
+#: src/ibus-setup-m17n.desktop.in.in:2
+msgid "IBus M17N Setup"
+msgstr "ການຕັ້ງຄ່າ IBus M17N"
+
+#: src/ibus-setup-m17n.desktop.in.in:3
+msgid "Set up IBus M17N engine"
+msgstr "ຕັ້ງຄ່າເຄື່ອງຈັກ IBus M17N"
+
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:6
+msgid "Ibus M17N"
+msgstr "Ibus M17N"
+
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:7
+msgid "M17N input engine for IBus"
+msgstr "ເຄື່ອງຈັກປ້ອນຂໍ້ມູນ M17N ສຳລັບ IBus"
+
+#: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:9
+msgid ""
+"This multilingualization input method allows entering many languages using "
+"the input methods from the m17n library."
+msgstr ""
+"ວິທີການປ້ອນຂໍ້ມູນຫຼາຍພາສານີ້ ຊ່ວຍໃຫ້ສາມາດພິມໄດ້ຫຼາຍພາສາ ໂດຍໃຊ້ວິທີການປ້ອນຂໍ້ມູນຈາກຄັງສະໝຸດ m17n."
