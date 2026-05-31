@@ -2,118 +2,123 @@
 # Copyright (C) YEAR Huang Peng <shawn.p.huang@gmail.com>
 # This file is distributed under the same license as the ibus-m17n package.
 # Junghee Lee <daemul72@gmail.com>, 2026.
+# 김인수 <simmon@nplob.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.38\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2026-02-16 10:36+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-05-31 05:01+0000\n"
+"Last-Translator: 김인수 <simmon@nplob.com>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/ibus-"
+"m17n/app/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.5\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
-msgstr ""
+msgstr "M17N"
 
 #: src/ibus-m17n-preferences-gtk3.ui:14 src/ibus-m17n-preferences-gtk4.ui:8
 msgid "System"
-msgstr ""
+msgstr "시스템"
 
 #: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
 msgid "Vertical"
-msgstr ""
+msgstr "수직선"
 
 #: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
 msgid "Horizontal"
-msgstr ""
+msgstr "수평선"
 
 #: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
 msgid "Single"
-msgstr ""
+msgstr "단일"
 
 #: src/ibus-m17n-preferences-gtk3.ui:40 src/ibus-m17n-preferences-gtk4.ui:15
 msgid "Double"
-msgstr ""
+msgstr "두 배"
 
 #: src/ibus-m17n-preferences-gtk3.ui:44 src/ibus-m17n-preferences-gtk4.ui:16
 msgid "Low"
-msgstr ""
+msgstr "낮음"
 
 #: src/ibus-m17n-preferences-gtk3.ui:48 src/ibus-m17n-preferences-gtk4.ui:13
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 #: src/ibus-m17n-preferences-gtk3.ui:57 src/ibus-m17n-preferences-gtk4.ui:21
 msgid "Preferences"
-msgstr ""
+msgstr "설정"
 
 #: src/ibus-m17n-preferences-gtk3.ui:172 src/ibus-m17n-preferences-gtk4.ui:57
 msgid "Foreground:"
-msgstr ""
+msgstr "글자색상:"
 
 #: src/ibus-m17n-preferences-gtk3.ui:181 src/ibus-m17n-preferences-gtk4.ui:71
 msgid "Background:"
-msgstr ""
+msgstr "배경색상:"
 
 #: src/ibus-m17n-preferences-gtk3.ui:196 src/ibus-m17n-preferences-gtk4.ui:85
 msgid "Underline:"
-msgstr ""
+msgstr "밑줄:"
 
 #: src/ibus-m17n-preferences-gtk3.ui:211 src/ibus-m17n-preferences-gtk4.ui:43
 msgid "<b>Pre-edit Appearance</b>"
-msgstr ""
+msgstr "<b>사전-편집 모양</b>"
 
 #: src/ibus-m17n-preferences-gtk3.ui:244 src/ibus-m17n-preferences-gtk4.ui:118
 msgid "Lookup Table Orientation:"
-msgstr ""
+msgstr "테이블 방향 조회:"
 
 #: src/ibus-m17n-preferences-gtk3.ui:260 src/ibus-m17n-preferences-gtk4.ui:130
 msgid "Use US keyboard layout"
-msgstr ""
+msgstr "US 키보드 배열 사용"
 
 #: src/ibus-m17n-preferences-gtk3.ui:280 src/ibus-m17n-preferences-gtk4.ui:104
 msgid "<b>Other</b>"
-msgstr ""
+msgstr "<b>기타</b>"
 
 #: src/ibus-m17n-preferences-gtk3.ui:299 src/ibus-m17n-preferences-gtk4.ui:141
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: src/ibus-m17n-preferences-gtk3.ui:347 src/ibus-m17n-preferences-gtk4.ui:166
 msgid "<b>m17n-lib Configuration</b>"
-msgstr ""
+msgstr "<b>m17n-lib 구성</b>"
 
 #: src/ibus-m17n-preferences-gtk3.ui:362 src/ibus-m17n-preferences-gtk4.ui:176
 msgid "Advanced"
-msgstr ""
+msgstr "고급"
 
 #: src/ibus-m17n-preferences-gtk4.ui:188
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: src/ibus-setup-m17n.desktop.in.in:2
 msgid "IBus M17N Setup"
-msgstr ""
+msgstr "IBus M17N 설정"
 
 #: src/ibus-setup-m17n.desktop.in.in:3
 msgid "Set up IBus M17N engine"
-msgstr ""
+msgstr "IBus M17N 엔진 설정"
 
 #: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:6
 msgid "Ibus M17N"
-msgstr ""
+msgstr "Ibus M17N"
 
 #: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:7
 msgid "M17N input engine for IBus"
-msgstr ""
+msgstr "IBUS를 위한 M17N 입력 엔진"
 
 #: org.freedesktop.ibus.engine.m17n.metainfo.xml.in:9
 msgid ""
 "This multilingualization input method allows entering many languages using "
 "the input methods from the m17n library."
 msgstr ""
+"이와 같은 다국어 입력 방식은 m17n 라이브러리에서 입력 방식을 사용하여 많은 "
+"언어를 입력 할 수 있도록 합니다."
