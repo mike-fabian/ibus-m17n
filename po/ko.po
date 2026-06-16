@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ibus-m17n 1.4.38\n"
 "Report-Msgid-Bugs-To: http://code.google.com/p/ibus/issues/entry\n"
 "POT-Creation-Date: 2026-02-16 10:36+0100\n"
-"PO-Revision-Date: 2026-05-31 05:01+0000\n"
+"PO-Revision-Date: 2026-06-16 06:10+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/ibus-"
 "m17n/app/ko/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.5\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #: src/m17nutil.c:351
 msgid "M17N"
@@ -29,11 +29,11 @@ msgstr "시스템"
 
 #: src/ibus-m17n-preferences-gtk3.ui:18 src/ibus-m17n-preferences-gtk4.ui:7
 msgid "Vertical"
-msgstr "수직선"
+msgstr "세로"
 
 #: src/ibus-m17n-preferences-gtk3.ui:22 src/ibus-m17n-preferences-gtk4.ui:6
 msgid "Horizontal"
-msgstr "수평선"
+msgstr "가로"
 
 #: src/ibus-m17n-preferences-gtk3.ui:36 src/ibus-m17n-preferences-gtk4.ui:14
 msgid "Single"
