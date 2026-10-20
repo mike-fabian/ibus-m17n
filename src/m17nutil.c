@@ -35,8 +35,20 @@ ibus_m17n_init_common (void)
 {
     M17N_INIT ();
 
+    int status = m17n_status ();
+    if (merror_code != 0 || status < 2) {
+        g_printerr ("ibus-m17n: m17n-lib initialization failed "
+                    "(merror_code=%d, m17n_status=%d)\n",
+                    merror_code, status);
+        exit (EXIT_FAILURE);
+    }
+
     if (utf8_converter == NULL) {
         utf8_converter = mconv_buffer_converter (Mcoding_utf_8, NULL, 0);
+        if (utf8_converter == NULL) {
+            g_printerr ("ibus-m17n: failed to create UTF-8 converter\n");
+            exit (EXIT_FAILURE);
+        }
     }
 }
 
